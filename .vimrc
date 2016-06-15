@@ -40,6 +40,12 @@ Plugin 'Auto-Pairs'
 Plugin 'Tabular'
 "注释对齐"
 
+Plugin 'terryma/vim-multiple-cursors'
+"多光标多行编辑"
+
+Plugin 'tpope/vim-commentary'
+"快速注释""
+
 Plugin 'scrooloose/syntastic' "
 "语法检测的插件，变量类型写错了、句末分号忘加了(针对需要加分号的语言)等等语法错误都能自动检测出来"
 "需要vim版本7.15"
@@ -210,7 +216,8 @@ map <leader>df :Dox<CR>
 map <leader>db :DoxBlock<CR>
 map <leader>dc a /* */<LEFT><LEFT><LEFT>
 
-map <C-n> :NERDTreeToggle<CR> 
+"将nerdtree切换改为f8，ctrl+n与多行冲突
+map <F8> :NERDTreeToggle<CR> 
 map <Leader><Leader>j <Plug>(easymotion-j)
 map <Leader><Leader>k <Plug>(easymotion-k)
 
