@@ -140,7 +140,7 @@ set laststatus=2 "显示状态栏，默认值为1，无法显示状态栏"
 set statusline=%!statusString 
 
 set foldenable "开启折叠"
-set foldmethod=marker "indent manual syntax 设置语法折叠" 
+set foldmethod=indent "indent manual syntax 设置语法折叠" 
 set foldcolumn=1 "设置折叠区域的宽度" 
 setlocal foldlevel=1 "设置折叠层数"
 
