@@ -198,7 +198,6 @@ vnoremap <silent> <Leader>F y?<c-r>=escape(@", "\\/.*$^~[]")<cr><cr>
 
 "python文件的一般设置"
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab
-autocmd FileType python map <F12> :!python %<CR>
 
 "php文件，按F12执行本文件"
 autocmd FileType php map <F12> :!php %<CR>
@@ -206,6 +205,8 @@ autocmd FileType php map <F12> :!php %<CR>
 autocmd FileType lua map <F12> :!lua %<CR>
 "go文件，按F12执行本文件"
 autocmd FileType go map <F12> :!go run %<CR>
+"python文件，按F12执行本文件"
+autocmd FileType python map <F12> :!python %<CR>
 
 "设置字典 ~/.vim/bundle/dict/文件的路径"
 "<ctrl-x>_<ctrl-k>打开提示"
