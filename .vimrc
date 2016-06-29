@@ -53,6 +53,9 @@ Plugin 'scrooloose/syntastic' "
 "Plugin 'DBGp-client'
 "vim的xdebug调试接口插件
 
+Plugin 'stephpy/vim-yaml'
+"yaml处理插件，原环境长文件处理很卡
+
 Plugin 'fatih/vim-go'
 "go的vim语法插件
 
