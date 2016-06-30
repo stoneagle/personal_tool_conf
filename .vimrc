@@ -28,6 +28,7 @@ Plugin 'EasyMotion'
 "Plugin 'xptemplate'
 Plugin 'UltiSnips'
 "代码补全，模板代码生成"
+
 Plugin 'honza/vim-snippets'
 "代码块集合
 
@@ -36,6 +37,9 @@ Plugin 'ctrlp.vim'
 
 Plugin 'Auto-Pairs'
 "括号补全"
+
+"Plugin 'Valloric/YouCompleteMe'
+"基于语义的代码补全
 
 Plugin 'Tabular'
 "注释对齐"
