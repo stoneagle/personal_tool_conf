@@ -36,7 +36,7 @@ Plugin 'ctrlp.vim'
 "文件查询
 
 Plugin 'Auto-Pairs'
-"括号补全"
+"括号补全
 
 Plugin 'Valloric/YouCompleteMe'
 "基于语义的代码补全
@@ -266,7 +266,16 @@ let g:ycm_cache_omnifunc=0
 let g:ycm_complete_in_comments = 1
 "在字符串输入中也能补全
 let g:ycm_complete_in_strings = 1
+"让Vim的补全菜单行为与一般IDE一致
+set completeopt=longest,menu 
 "定义快捷健补全
+inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"    "回车即选中当前项
+"上下左右键的行为 会显示其他信息
+inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+
 let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
 " 设置在下面几种格式的文件上屏蔽ycm
