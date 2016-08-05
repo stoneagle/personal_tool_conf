@@ -7,7 +7,7 @@ Bundle 'gmarik/vundle'
 Plugin 'shemerey/vim-project'
 "工程插件"
 
-"Plugin 'mattn/emmet-vim'"
+Plugin 'mattn/emmet-vim'"
 "php 代码格式化插件 "
 
 "Plugin 'thisivan/vim-bufexplorer'"
@@ -16,8 +16,8 @@ Plugin 'shemerey/vim-project'
 Plugin 'taglist.vim'
 "taglist插件，配合ctag使用" 
 
-"Plugin 'SuperTab'
-"tab补全效果，使用youcompleteme以后，暂时不需要？
+Plugin 'SuperTab'
+"tab补全效果，重新使用，YouCompleteMe对于php不友好
 
 Plugin 'The-NERD-tree'
 "树状文件结构"
@@ -38,7 +38,7 @@ Plugin 'ctrlp.vim'
 Plugin 'Auto-Pairs'
 "括号补全
 
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 "基于语义的代码补全
 
 Plugin 'Tabular'
@@ -72,6 +72,18 @@ Plugin 'bsdelf/bufferhint'
 
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
 "go的代码补全
+
+Plugin 'nathanaelkane/vim-indent-guides'
+"代码垂直缩进对齐
+
+Plugin 'hari-rangarajan/CCTree' 
+"查看function的call tree
+
+Plugin 'tpope/vim-surround'
+"增加括号、标签等
+
+Plugin 'tpope/vim-fugitive'
+"管理git
 
 call vundle#end()            
 filetype plugin indent on
@@ -107,6 +119,18 @@ let g:molokai_original = 1
 let g:rehash256 = 1
 set t_Co=256
 colorscheme molokai
+
+"vim-indent-guides缩进对齐配置
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1 
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+hi IndentGuidesOdd guibg=red ctermbg=3
+hi IndentGuidesEven guibg=green ctermbg=4
+
+"设置emmet插件只对html和css有效
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 
 "set tags=/home/wuzhongyang/tags"
 set tags =tags;
