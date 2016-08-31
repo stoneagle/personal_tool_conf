@@ -332,3 +332,5 @@ let g:ycm_semantic_triggers =  {
 let g:ycm_cache_omnifunc = 1
 let g:ycm_use_ultisnips_completer = 1
 
+" 将volt后缀格式，设置为html处理
+au BufNewFile,BufRead *.volt set filetype=html
