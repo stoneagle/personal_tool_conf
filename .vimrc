@@ -85,6 +85,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 "管理git
 
+Bundle 'andviro/flake8-vim'  
+"python的提示插件
+
 call vundle#end()            
 filetype plugin indent on
 "autocmd FileType php set omnifunc=phpcomplete#CompletePHP
@@ -97,6 +100,10 @@ syntax on
 
 nnoremap - :call bufferhint#Popup()<CR>
 nnoremap \ :call bufferhint#LoadPrevious()<CR>
+
+" Syntastic  
+" let g:syntastic_python_checker = 'pylint'  
+let g:syntastic_python_checker = 'pep8'  
 
 let g:UltiSnipsExpandTrigger="ii"
 let g:UltiSnipsJumpForwardTrigger="II"
