@@ -129,8 +129,8 @@ hi IndentGuidesOdd guibg=red ctermbg=3
 hi IndentGuidesEven guibg=green ctermbg=4
 
 "设置emmet插件只对html和css有效
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+"let g:user_emmet_install_global = 0
+"autocmd FileType html,css,tpl EmmetInstall
 
 "set tags=/home/wuzhongyang/tags"
 set tags =tags;
@@ -252,7 +252,7 @@ map <leader>db :DoxBlock<CR>
 map <leader>dc a /* */<LEFT><LEFT><LEFT>
 
 "将nerdtree切换改为f8，ctrl+n与多行冲突
-map <F8> :NERDTreeToggle<CR> 
+map <F7> :NERDTreeToggle<CR> 
 map <Leader><Leader>j <Plug>(easymotion-j)
 map <Leader><Leader>k <Plug>(easymotion-k)
 
@@ -265,6 +265,8 @@ nnoremap <Leader>a: :Tabularize /:\zs<CR>
 vnoremap <Leader>a: :Tabularize /:\zs<CR>
 nnoremap <Leader>a> :Tabularize /=><CR> 
 vnoremap <Leader>a> :Tabularize /=><CR>
+nnoremap <Leader>a/ :Tabularize /\/\/<CR> 
+vnoremap <Leader>a/ :Tabularize /\/\/<CR>
 
 set pastetoggle=<F2>
 
