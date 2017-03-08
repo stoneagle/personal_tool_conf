@@ -98,7 +98,8 @@ filetype plugin indent on
 "go相关插件部署
 au BufRead,BufNewFile *.go set filetype=go
 let g:go_fmt_command = "goimports"    "save file时既可以格式化代码，又可以自动插入包导入语句
-"let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+set completeopt-=preview            "关闭自动补全时的函数提示窗口
+" let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 " let g:syntastic_go_checkers = ['govet', 'errcheck', 'go']
 " let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 " let g:go_list_type = "quickfix"
@@ -131,7 +132,7 @@ if !exists('g:neocomplcache_force_omni_patterns')
   let g:neocomplcache_force_omni_patterns = {}
 endif
 let g:neocomplcache_force_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-" let g:neocomplcache_force_omni_patterns.go = '\h\w*\.\?'
+let g:neocomplcache_force_omni_patterns.go = '\h\w*\.\?'
 " let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 " let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
