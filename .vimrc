@@ -68,6 +68,9 @@ Plugin 'stephpy/vim-yaml'
 Plugin 'fatih/vim-go'
 "go的代码补全
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
+"go的测试生成
+Plugin 'buoto/gotests-vim'
+
 
 "lua相关插件
 Plugin 'xolox/vim-misc'
@@ -92,17 +95,45 @@ Plugin 'tpope/vim-fugitive'
 "python的提示插件
 Bundle 'andviro/flake8-vim'  
 
+"全局查找插件
+Plugin 'rking/ag.vim'
+
+"vim与tmux的交互
+Plugin 'benmills/vimux'
+
 call vundle#end()            
 filetype plugin indent on
+let mapleader=','
+
+"命令行模式补齐
+cmap <TAB>  <C-d>
+
+"ag查找设置
+let g:ago="/home/wuzhongyang/go_project/src"
+let g:agt="/home/wuzhongyang/opengrok/source/time"
 
 "go相关插件部署
 au BufRead,BufNewFile *.go set filetype=go
 let g:go_fmt_command = "goimports"    "save file时既可以格式化代码，又可以自动插入包导入语句
 set completeopt-=preview            "关闭自动补全时的函数提示窗口
-" let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-" let g:syntastic_go_checkers = ['govet', 'errcheck', 'go']
-" let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-" let g:go_list_type = "quickfix"
+"当vimgo与syntastic一起使用时，vim会无法显示语法格式错误
+"避免GoTest与GoBuild等命令的输出不显示
+let g:go_list_type                   = "quickfix"
+"让quickfix默认在底部显示
+autocmd FileType qf wincmd J
+let g:go_highlight_functions         = 1
+let g:go_highlight_methods           = 1
+let g:go_highlight_fields            = 1
+let g:go_highlight_structs           = 1
+let g:go_highlight_interfaces        = 1
+let g:go_highlight_operators         = 1
+let g:go_highlight_build_constraints = 1
+"映射GoTests的相关测试文件生成
+nnoremap <Leader>gt :GoTests <CR>
+"需要拷贝ftplugin中的go.vim到vim目录下，进行相关映射
+map <Leader>ga :wa<CR> :GolangTestCurrentPackage<CR>
+map <Leader>gf :wa<CR> :GolangTestFocused<CR>
+
 "函数补齐的快捷键
 imap <C-e> <C-x><C-o>
 
@@ -140,7 +171,10 @@ let g:neocomplcache_force_omni_patterns.go = '\h\w*\.\?'
 
 " Syntastic  
 " let g:syntastic_python_checker = 'pylint'  
-let g:syntastic_python_checker = 'pep8'  
+" let g:syntastic_python_checker = 'pep8'  
+let g:syntastic_go_checkers = ['govet', 'errcheck', 'go']
+"添加下行时，代码格式不会报错
+"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 "UltiSnip
 let g:UltiSnipsExpandTrigger="ii"
@@ -149,6 +183,7 @@ let g:UltiSnipsJumpBackwardTrigger="OO"
 
 "nerdtree
 let NERDTreeWinSize=20              "设置nerdtree的宽度
+let NERDTreeShowHidden=1
 map <F7> :NERDTreeToggle<CR> 
 autocmd VimEnter * NERDTree
 
@@ -162,7 +197,6 @@ let g:tagbar_width=30
 let g:tagbar_autofocus = 0
 autocmd VimEnter * nested TagbarOpen
 
-let mapleader=','
 
 "主题配置
 let g:molokai_original = 1
