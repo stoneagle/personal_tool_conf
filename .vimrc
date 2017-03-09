@@ -104,6 +104,8 @@ Plugin 'benmills/vimux'
 call vundle#end()            
 filetype plugin indent on
 let mapleader=','
+"允许删除nerdtree中的文件
+set modifiable
 
 "命令行模式补齐
 cmap <TAB>  <C-d>
@@ -114,6 +116,7 @@ let g:agt="/home/wuzhongyang/opengrok/source/time"
 
 "go相关插件部署
 au BufRead,BufNewFile *.go set filetype=go
+"在开发大型项目时过于卡顿
 let g:go_fmt_command = "goimports"    "save file时既可以格式化代码，又可以自动插入包导入语句
 set completeopt-=preview            "关闭自动补全时的函数提示窗口
 "当vimgo与syntastic一起使用时，vim会无法显示语法格式错误
@@ -215,6 +218,13 @@ hi IndentGuidesEven guibg=green ctermbg=4
 "easymotion
 map <Leader><Leader>j <Plug>(easymotion-j)
 map <Leader><Leader>k <Plug>(easymotion-k)
+
+"fugitive在vim中的git插件
+nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gl :Git lg<CR>
+nnoremap <Leader>gp :Git push<CR>
 
 "set tags=/home/wuzhongyang/tags"
 syntax on

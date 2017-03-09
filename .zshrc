@@ -27,3 +27,5 @@ plugins=(git autojump)
 source $ZSH/oh-my-zsh.sh
 # source ~/.oh-my-zsh/plugins/incr/incr*.zsh
 
+# 设置用户空间
+set -g default-command "reattach-to-user-namespace -l /usr/bin/zsh"
