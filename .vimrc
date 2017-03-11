@@ -106,6 +106,10 @@ filetype plugin indent on
 let mapleader=','
 "允许删除nerdtree中的文件
 set modifiable
+"当vim退出时，将剪贴板内容保存在xsel中(需要xsel与xmanager与vimx的支持)
+autocmd VimLeave * call system("xsel -ib", getreg('+'))
+"使用系统剪切板
+set clipboard=unnamedplus
 
 "命令行模式补齐
 cmap <TAB>  <C-d>
@@ -171,6 +175,12 @@ let g:neocomplcache_force_omni_patterns.go = '\h\w*\.\?'
 " let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 
+" ctrlp
+" 忽略不必要的文件与权限
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  'vendor/bundle/*\|vendor/cache/*\|public\|spec',
+  \ 'file': '\v\.(exe|so|dll|swp|log|jpg|png|json)$',
+  \ }
 
 " Syntastic  
 " let g:syntastic_python_checker = 'pylint'  
@@ -178,6 +188,8 @@ let g:neocomplcache_force_omni_patterns.go = '\h\w*\.\?'
 let g:syntastic_go_checkers = ['govet', 'errcheck', 'go']
 "添加下行时，代码格式不会报错
 "let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_javascript_eslint_exec = 'eslint'
 
 "UltiSnip
 let g:UltiSnipsExpandTrigger="ii"
@@ -231,6 +243,7 @@ syntax on
 set tags =tags;
 set nocompatible                    "关闭vi兼容模式"
 set number                          "显示行号"
+set relativenumber                  "显示相对行号
 set cursorline                      "突出显示当前行" 
 set ruler                           "打开状态栏标号"
 set shiftwidth=4                    "设定<<和>>命令移动时宽度为4"
@@ -252,6 +265,7 @@ set encoding=utf-8
 set langmenu=zh_CN.UTF-8
 language message zh_CN.UTF-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+autocmd BufNewFile,BufRead *.json set filetype=javascript           "打开json时，用javascript语法高亮显示
 set termencoding=utf-8              "vim用于屏幕显示的编码"
 " set nowrapscan                    "禁止在搜索到文件两段时重新搜索
 " set showmatch                     "插入括号时，短暂地跳转到匹配的对应括号

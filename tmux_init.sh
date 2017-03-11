@@ -46,7 +46,7 @@ fi
 $cmd has -t $session
 
 if [ $? != 0 ]; then
-  $cmd new -d -n vim -c $dir -s $session "vim" 
+  $cmd new -d -n vim -c $dir -s $session "vimx" 
   $cmd selectp -t 1
   $cmd splitw -h -c $dir -p 30 "zsh"
   $cmd selectp -t 2
