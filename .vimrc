@@ -2,7 +2,7 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 "vundle插件"
-Bundle 'gmarik/vundle'   
+Plugin 'VundleVim/Vundle.vim'   
 
 "工程插件"
 Plugin 'shemerey/vim-project'
@@ -93,7 +93,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 
 "python的提示插件
-Bundle 'andviro/flake8-vim'  
+Plugin 'andviro/flake8-vim'  
 
 "全局查找插件
 Plugin 'rking/ag.vim'
