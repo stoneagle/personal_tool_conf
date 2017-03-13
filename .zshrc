@@ -10,7 +10,7 @@ alias tmux='tmux -2'
 export DISPLAY=:7 
 export GOARCH=amd64
 export GOOS=linux
-export GOROOT=/home/wuzhongyang/bin/go #注意GOROOT值为Go对应解压路径
+export GOROOT=/home/wuzhongyang/go #注意GOROOT值为Go对应解压路径
 export GOPATH=$GOROOT/gopkg:/home/wuzhongyang/go_project
 export PATH=$PATH:$GOROOT/bin:$GOROOT/gopkg/bin:/home/wuzhongyang/go_project/bin
 
