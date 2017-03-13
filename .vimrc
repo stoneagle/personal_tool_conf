@@ -37,7 +37,8 @@ Plugin 'EasyMotion'
 Plugin 'UltiSnips'
 
 "代码块集合
-Plugin 'honza/vim-snippets'
+"与ultisnips功能有些重合，而且plugininstall失败
+"Plugin 'honza/vim-snippets'
 
 "文件查询
 Plugin 'ctrlpvim/ctrlp.vim'
