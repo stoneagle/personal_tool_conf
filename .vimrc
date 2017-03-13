@@ -18,8 +18,8 @@ Plugin 'majutsushi/tagbar'
 "Plugin 'Valloric/YouCompleteMe'
 "Plugin 'SuperTab'
 Plugin 'Shougo/neocomplcache.vim'
-"用于完善-号选择的插件
-Plugin 'Shougo/unite.vim'
+"用于完善-号选择的插件，屏蔽，使用体验不好
+"Plugin 'Shougo/unite.vim'
 
 "airline，状态栏显示
 Plugin 'bling/vim-airline'
@@ -161,7 +161,7 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
-imap <expr> -  pumvisible() ? "\<Plug>(neocomplcache_start_unite_quick_match)" : '-' 
+"imap <expr> -  pumvisible() ? "\<Plug>(neocomplcache_start_unite_quick_match)" : '-' 
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
