@@ -57,7 +57,12 @@ Plugin 'tpope/vim-commentary'
 
 "语法检测的插件，变量类型写错了、句末分号忘加了(针对需要加分号的语言)等等语法错误都能自动检测出来"
 "需要vim版本7.15"
-Plugin 'scrooloose/syntastic' "
+"配合vim-go使用非常慢，非常卡顿"
+"Plugin 'scrooloose/syntastic' "
+
+"语法检测插件，异步
+"需要vim版本8.0以上
+Plugin 'w0rp/ale'
 
 "Plugin 'DBGp-client'
 "vim的xdebug调试接口插件
@@ -71,7 +76,6 @@ Plugin 'fatih/vim-go'
 Plugin 'nsf/gocode', {'rtp': 'vim/'}
 "go的测试生成
 Plugin 'buoto/gotests-vim'
-
 
 "lua相关插件
 Plugin 'xolox/vim-misc'
@@ -102,6 +106,9 @@ Plugin 'rking/ag.vim'
 "vim与tmux的交互
 Plugin 'benmills/vimux'
 
+"async异步操作
+Plugin 'skywind3000/asyncrun.vim'
+
 call vundle#end()            
 filetype plugin indent on
 let mapleader=','
@@ -122,7 +129,7 @@ let g:agt="/home/wuzhongyang/opengrok/source/time"
 "go相关插件部署
 au BufRead,BufNewFile *.go set filetype=go
 "在开发大型项目时过于卡顿
-let g:go_fmt_command = "goimports"    "save file时既可以格式化代码，又可以自动插入包导入语句
+let g:go_fmt_command = 'goimports'    "save file时既可以格式化代码，又可以自动插入包导入语句
 set completeopt-=preview            "关闭自动补全时的函数提示窗口
 "当vimgo与syntastic一起使用时，vim会无法显示语法格式错误
 "避免GoTest与GoBuild等命令的输出不显示
@@ -146,7 +153,7 @@ map <Leader>gf :wa<CR> :GolangTestFocused<CR>
 imap <C-e> <C-x><C-o>
 
 "用于兼容部分旧版本vim
-"let $VIMRUNTIME = "/usr/share/vim/vim72"
+"let $VIMRUNTIME = '/usr/share/vim/vim72'
 
 "neocomplcache"
 let g:acp_enableAtStartup                        = 0
@@ -186,11 +193,31 @@ let g:ctrlp_custom_ignore = {
 " Syntastic  
 " let g:syntastic_python_checker = 'pylint'  
 " let g:syntastic_python_checker = 'pep8'  
-let g:syntastic_go_checkers = ['govet', 'errcheck', 'go']
-"添加下行时，代码格式不会报错
-"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+" let g:syntastic_go_checkers = ['govet', 'errcheck', 'go']
+" let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['go'], 'passive_filetypes': [] }
 " let g:syntastic_javascript_checkers = ['eslint']
 " let g:syntastic_javascript_eslint_exec = 'eslint'
+
+" ale
+" let g:ale_linters = { 'go': ['gofmt -e', 'go vet', 'golint', 'errcheck', 'gometalinter', 'gosimple', 'staticcheck'], }
+" let g:ale_linters = { 'go': ['gofmt -e', 'go vet', 'golint', 'gometalinter', 'gosimple', 'staticcheck'], }
+" 保持侧边栏可见
+let g:ale_sign_column_always = 1
+" 改变错误和警告标识符
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+" airline展示
+" let g:ale_statusline_format = ['X %d', 'W %d', 'ok'] 
+" 自定义跳转错误行快捷键
+nmap <silent> <C-e> <Plug>(ale_previous_wrap)
+nmap <silent> <C-w> <Plug>(ale_next_wrap)
+
+" asyncrun
+nnoremap <Leader>agc :AsyncRun! errcheck %<CR>
+"自动弹出quickfix
+augroup MyGroup
+    autocmd User AsyncRunStart call asyncrun#quickfix_toggle(8, 1)
+augroup END
 
 "UltiSnip
 let g:UltiSnipsExpandTrigger="ii"

@@ -7,6 +7,7 @@ export ZSH=/home/wuzhongyang/.oh-my-zsh
 PATH=$PATH
 alias phptags='ctags --langmap=php:.engine.inc.module.theme.php  --php-kinds=cdf  --languages=php --exclude=vendor'
 alias tmux='tmux -2'
+alias vim='/home/wuzhongyang/src/vim-master/src/vim'
 export DISPLAY=:7 
 export GOARCH=amd64
 export GOOS=linux
