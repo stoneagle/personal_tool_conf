@@ -109,6 +109,9 @@ Plugin 'benmills/vimux'
 "async异步操作
 Plugin 'skywind3000/asyncrun.vim'
 
+"cscope操作插件
+Plugin 'brookhong/cscope.vim'
+
 call vundle#end()            
 filetype plugin indent on
 let mapleader=','
@@ -213,11 +216,31 @@ nmap <silent> <C-e> <Plug>(ale_previous_wrap)
 nmap <silent> <C-w> <Plug>(ale_next_wrap)
 
 " asyncrun
-nnoremap <Leader>agc :AsyncRun! errcheck %<CR>
+nnoremap <Leader>arc :AsyncRun! errcheck %<CR>
 "自动弹出quickfix
 augroup MyGroup
     autocmd User AsyncRunStart call asyncrun#quickfix_toggle(8, 1)
 augroup END
+
+" cscope插件
+nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
+nnoremap <leader>l :call ToggleLocationList()<CR>
+"s: Find this C symbol
+nnoremap  <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>
+"" g: Find this definition
+nnoremap  <leader>fg :call CscopeFind('g', expand('<cword>'))<CR>
+"" d: Find functions called by this function
+nnoremap  <leader>fd :call CscopeFind('d', expand('<cword>'))<CR>
+"" c: Find functions calling this function
+nnoremap  <leader>fc :call CscopeFind('c', expand('<cword>'))<CR>
+"" t: Find this text string
+nnoremap  <leader>ft :call CscopeFind('t', expand('<cword>'))<CR>
+"" e: Find this egrep pattern
+nnoremap  <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>
+"" f: Find this file
+nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
+"" i: Find files #including this file
+nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>"
 
 "UltiSnip
 let g:UltiSnipsExpandTrigger="ii"
