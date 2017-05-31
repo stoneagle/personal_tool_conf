@@ -13,7 +13,8 @@ export GOARCH=amd64
 export GOOS=linux
 export GOROOT=/home/wuzhongyang/go #注意GOROOT值为Go对应解压路径
 export GOPATH=$GOROOT/gopkg:/home/wuzhongyang/go_project
-export PATH=$PATH:$GOROOT/bin:$GOROOT/gopkg/bin:/home/wuzhongyang/go_project/bin
+export PATH=$PATH:$GOROOT/bin:$GOROOT/gopkg/bin:/home/wuzhongyang/go_project/bin:$HOME/node/bin
+export ANSIBLE_ROOT=/home/wuzhongyang/opengrok/source/ansible
 
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="bira"
