@@ -26,7 +26,7 @@ COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
 [[ -s ~/.autojump/etc/profile.d/autojump.sh  ]] && . ~/.autojump/etc/profile.d/autojump.sh
 
-plugins=(git autojump)
+plugins=(git autojump git-flow)
 source $ZSH/oh-my-zsh.sh
 # source ~/.oh-my-zsh/plugins/incr/incr*.zsh
 
