@@ -408,3 +408,4 @@ set pastetoggle=<F2>
 
 "前端处理
 au BufNewFile,BufRead *.volt set filetype=html      "将volt后缀格式，设置为html处理
+au BufNewFile,BufRead *.ts set filetype=javascript      "将ts后缀格式，设置为javascript处理
