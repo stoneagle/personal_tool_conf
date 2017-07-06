@@ -318,6 +318,7 @@ language message zh_CN.UTF-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 autocmd BufNewFile,BufRead *.json set filetype=javascript           "打开json时，用javascript语法高亮显示
 set termencoding=utf-8              "vim用于屏幕显示的编码"
+set wrap
 " set nowrapscan                    "禁止在搜索到文件两段时重新搜索
 " set showmatch                     "插入括号时，短暂地跳转到匹配的对应括号
 " set matchtime=2                   "短暂跳转到匹配括号的时间
