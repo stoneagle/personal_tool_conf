@@ -112,6 +112,9 @@ Plugin 'skywind3000/asyncrun.vim'
 "cscope操作插件
 Plugin 'brookhong/cscope.vim'
 
+"angularjs的ts插件
+Plugin 'leafgarland/typescript-vim'
+
 call vundle#end()            
 filetype plugin indent on
 let mapleader=','
@@ -409,4 +412,4 @@ set pastetoggle=<F2>
 
 "前端处理
 au BufNewFile,BufRead *.volt set filetype=html      "将volt后缀格式，设置为html处理
-au BufNewFile,BufRead *.ts set filetype=javascript      "将ts后缀格式，设置为javascript处理
+"au BufNewFile,BufRead *.ts set filetype=javascript      "将ts后缀格式，设置为javascript处理
