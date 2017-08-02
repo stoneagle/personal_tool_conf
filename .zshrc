@@ -32,3 +32,5 @@ source $ZSH/oh-my-zsh.sh
 
 # 设置用户空间
 set -g default-command "reattach-to-user-namespace -l /usr/bin/zsh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

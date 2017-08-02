@@ -43,6 +43,9 @@ Plugin 'UltiSnips'
 "文件查询
 Plugin 'ctrlpvim/ctrlp.vim'
 
+"相关搜索
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
+
 "括号补全
 Plugin 'Auto-Pairs'
 
@@ -114,6 +117,9 @@ Plugin 'brookhong/cscope.vim'
 
 "angularjs的ts插件
 Plugin 'leafgarland/typescript-vim'
+
+"python插件
+Plugin 'davidhalter/jedi-vim'
 
 call vundle#end()            
 filetype plugin indent on
@@ -219,6 +225,8 @@ nmap <silent> <C-e> <Plug>(ale_previous_wrap)
 nmap <silent> <C-w> <Plug>(ale_next_wrap)
 
 " asyncrun
+" 非匹配文字不显示(体现在asyncrun curl等行为无效)
+autocmd BufEnter * set errorformat&
 nnoremap <Leader>arc :AsyncRun! errcheck %<CR>
 "自动弹出quickfix
 augroup MyGroup
