@@ -14,3 +14,6 @@ go get -u github.com/cweill/gotests/...
 go get -u github.com/nsf/gocode
 
 # shell环境使用xmanager
+
+# 安装zsh-autosuggestions插件
+git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions

@@ -16,21 +16,24 @@ export GOPATH=$GOROOT/gopkg:/home/wuzhongyang/go_project
 export PATH=$PATH:$GOROOT/bin:$GOROOT/gopkg/bin:/home/wuzhongyang/go_project/bin:$HOME/node/bin
 export ANSIBLE_ROOT=/home/wuzhongyang/opengrok/source/ansible
 
-# ZSH_THEME="robbyrussell"
-# ZSH_THEME="bira"
 ZSH_THEME="agnoster"
-# ZSH_THEME="ys"
-# ZSH_THEME="af-magic"
 
+plugins=(git autojump git-flow zsh-autosuggestions)
+
+# autojump配置
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
 [[ -s ~/.autojump/etc/profile.d/autojump.sh  ]] && . ~/.autojump/etc/profile.d/autojump.sh
 
-plugins=(git autojump git-flow)
+# oh-my-zsh配置
 source $ZSH/oh-my-zsh.sh
-# source ~/.oh-my-zsh/plugins/incr/incr*.zsh
+
+# zsh-autosuggestions配置
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
 
 # 设置用户空间
 set -g default-command "reattach-to-user-namespace -l /usr/bin/zsh"
 
+# fzf配置
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
