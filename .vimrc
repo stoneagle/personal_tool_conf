@@ -43,9 +43,6 @@ Plugin 'UltiSnips'
 "文件查询
 Plugin 'ctrlpvim/ctrlp.vim'
 
-"相关搜索
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
-
 "括号补全
 Plugin 'Auto-Pairs'
 
