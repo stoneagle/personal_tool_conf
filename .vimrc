@@ -41,7 +41,8 @@ Plugin 'UltiSnips'
 "Plugin 'honza/vim-snippets'
 
 "文件查询
-Plugin 'ctrlpvim/ctrlp.vim'
+"Plugin 'ctrlpvim/ctrlp.vim' 效率被fzf取代
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 
 "括号补全
 Plugin 'Auto-Pairs'
@@ -191,13 +192,18 @@ let g:neocomplcache_force_omni_patterns.go = '\h\w*\.\?'
 " let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 " let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
-
-" ctrlp
+" ctrlp(效率被fzf取代)
 " 忽略不必要的文件与权限
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  'vendor/bundle/*\|vendor/cache/*\|public\|spec',
-  \ 'file': '\v\.(exe|so|dll|swp|log|jpg|png|json)$',
-  \ }
+" let g:ctrlp_custom_ignore = {
+"   \ 'dir':  'vendor/bundle/*\|vendor/cache/*\|public\|spec',
+"   \ 'file': '\v\.(exe|so|dll|swp|log|jpg|png|json)$',
+"   \ }
+
+" fzf
+let init_path = $PWD 
+nnoremap <Leader>f :FZF <CR>
+" 回到初始目录并执行搜索
+nnoremap <Leader>if :execute "cd ".init_path<CR> :FZF <CR>
 
 " Syntastic  
 " let g:syntastic_python_checker = 'pylint'  
@@ -207,7 +213,7 @@ let g:ctrlp_custom_ignore = {
 " let g:syntastic_javascript_checkers = ['eslint']
 " let g:syntastic_javascript_eslint_exec = 'eslint'
 
-" ale
+" ale错误自动校验
 " let g:ale_linters = { 'go': ['gofmt -e', 'go vet', 'golint', 'errcheck', 'gometalinter', 'gosimple', 'staticcheck'], }
 " let g:ale_linters = { 'go': ['gofmt -e', 'go vet', 'golint', 'gometalinter', 'gosimple', 'staticcheck'], }
 " 保持侧边栏可见
@@ -233,21 +239,21 @@ augroup END
 " cscope插件
 nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
 nnoremap <leader>l :call ToggleLocationList()<CR>
-"s: Find this C symbol
+"" s: 查找C语言符号，即查找函数名、宏、枚举值等出现的地方 
 nnoremap  <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>
-"" g: Find this definition
+"" g: 查找函数、宏、枚举等定义的位置，类似ctags所提供的功能 
 nnoremap  <leader>fg :call CscopeFind('g', expand('<cword>'))<CR>
-"" d: Find functions called by this function
+"" d: 查找本函数调用的函数 
 nnoremap  <leader>fd :call CscopeFind('d', expand('<cword>'))<CR>
-"" c: Find functions calling this function
+"" c: 查找调用本函数的函数 
 nnoremap  <leader>fc :call CscopeFind('c', expand('<cword>'))<CR>
-"" t: Find this text string
+"" t: 查找指定的字符串 
 nnoremap  <leader>ft :call CscopeFind('t', expand('<cword>'))<CR>
-"" e: Find this egrep pattern
+"" e: 查找egrep模式，相当于egrep功能，但查找速度快多了 
 nnoremap  <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>
-"" f: Find this file
+"" f: 查找并打开文件，类似vim的find功能 
 nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
-"" i: Find files #including this file
+"" i: 查找包含本文件的文件 
 nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>"
 
 "UltiSnip
@@ -271,7 +277,6 @@ let g:tagbar_width=30
 let g:tagbar_autofocus = 0
 autocmd VimEnter * nested TagbarOpen
 
-
 "主题配置
 let g:molokai_original = 1
 let g:rehash256 = 1
@@ -292,7 +297,12 @@ map <Leader><Leader>k <Plug>(easymotion-k)
 
 "fugitive在vim中的git插件
 nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gr :Gread<CR>
+nnoremap <Leader>gw :Gwrite<CR>
+nnoremap <Leader>gm :Gmove<CR>
+nnoremap <Leader>gd :Gdelete<CR>
+nnoremap <Leader>gg :Ggrep<CR>
+nnoremap <Leader>gf :Gdiff<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gl :Git lg<CR>
 nnoremap <Leader>gp :Git push<CR>

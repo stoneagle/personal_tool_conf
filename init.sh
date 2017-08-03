@@ -1,3 +1,4 @@
+# 旧版本初始化脚本
 # 更改shell为zsh
 chsh -s /bin/zsh
 # 安装oh-my-zsh
