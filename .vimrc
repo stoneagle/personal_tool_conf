@@ -165,6 +165,15 @@ imap <C-e> <C-x><C-o>
 "用于兼容部分旧版本vim
 "let $VIMRUNTIME = '/usr/share/vim/vim72'
 
+" python-jedi插件
+" 默认使用python可是python和python3静态无法共同存在，共同存在时会显示dyn，vim
+" --version虽然显示+python/dyn，但是使用时无效
+let g:jedi#force_py_version=3
+let g:jedi#popup_select_first=0
+set completeopt=longest,menuone
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#popup_on_dot = 0
+
 "neocomplcache"
 let g:acp_enableAtStartup                        = 0
 let g:neocomplcache_enable_at_startup            = 1
@@ -182,13 +191,15 @@ inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType python setlocal omnifunc=jedi#completions
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 if !exists('g:neocomplcache_force_omni_patterns')
   let g:neocomplcache_force_omni_patterns = {}
 endif
 let g:neocomplcache_force_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_force_omni_patterns.go = '\h\w*\.\?'
+let g:neocomplcache_force_omni_patterns.python = '\%([^. \t]\.\|^\s*@\)\w*'
 " let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 " let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
