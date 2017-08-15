@@ -170,7 +170,8 @@ imap <C-e> <C-x><C-o>
 " --version虽然显示+python/dyn，但是使用时无效
 let g:jedi#force_py_version=3
 let g:jedi#popup_select_first=0
-set completeopt=longest,menuone
+" 会影响go的匹配
+"set completeopt=longest,menuone
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#popup_on_dot = 0
 
@@ -248,6 +249,7 @@ augroup MyGroup
 augroup END
 
 " cscope插件
+let g:cscope_silent = 1
 nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
 nnoremap <leader>l :call ToggleLocationList()<CR>
 "" s: 查找C语言符号，即查找函数名、宏、枚举值等出现的地方 
@@ -426,6 +428,8 @@ autocmd FileType python map <F12> :!python %<CR>
 "tabularize根据对应符号自动对齐
 nnoremap <Leader>a= :Tabularize /=<CR>
 vnoremap <Leader>a= :Tabularize /=<CR>
+nnoremap <Leader>ag= :Tabularize /:=<CR>
+vnoremap <Leader>ag= :Tabularize /:=<CR>
 nnoremap <Leader>a: :Tabularize /:\zs<CR>
 vnoremap <Leader>a: :Tabularize /:\zs<CR>
 nnoremap <Leader>a> :Tabularize /=><CR> 
