@@ -119,6 +119,9 @@ Plugin 'leafgarland/typescript-vim'
 "python插件
 Plugin 'davidhalter/jedi-vim'
 
+"驼峰跳转
+Plugin 'bkad/CamelCaseMotion'
+
 call vundle#end()            
 filetype plugin indent on
 let mapleader=','
@@ -153,14 +156,22 @@ let g:go_highlight_structs           = 1
 let g:go_highlight_interfaces        = 1
 let g:go_highlight_operators         = 1
 let g:go_highlight_build_constraints = 1
+"install当前Golang项目
+"nnoremap <Leader>agi :AsyncRun! go install %<CR>
+nnoremap <Leader>agi :AsyncRun! go install %<CR>
 "映射GoTests的相关测试文件生成
-nnoremap <Leader>gt :GoTests <CR>
+nnoremap <Leader>goi :GoInstall <CR>
 "需要拷贝ftplugin中的go.vim到vim目录下，进行相关映射
-map <Leader>ga :wa<CR> :GolangTestCurrentPackage<CR>
-map <Leader>gf :wa<CR> :GolangTestFocused<CR>
+map <Leader>goa :wa<CR> :GolangTestCurrentPackage<CR>
+map <Leader>gof :wa<CR> :GolangTestFocused<CR>
 
 "函数补齐的快捷键
 imap <C-e> <C-x><C-o>
+
+"CamelCaseMotion插件
+map <S-w> <Plug>CamelCaseMotion_w
+map <S-b> <Plug>CamelCaseMotion_b
+map <S-e> <Plug>CamelCaseMotion_e
 
 "用于兼容部分旧版本vim
 "let $VIMRUNTIME = '/usr/share/vim/vim72'
@@ -402,10 +413,10 @@ nnoremap <leader>2 :set filetype=css<CR>
 nnoremap <leader>3 :set filetype=javascript<CR>
 nnoremap <leader>4 :set filetype=php<CR>
 nnoremap <leader>h :noh<CR>
+nnoremap <leader>wa :wa<CR>
 nnoremap <leader>q :q<CR>
 
 "快捷关闭键"
-nnoremap <leader>wq :wq<CR>
 nnoremap <leader>pg :PluginInstall<CR>
 
 "全文搜索选中的文本"
