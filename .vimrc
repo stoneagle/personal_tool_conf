@@ -145,6 +145,7 @@ let g:go_highlight_build_constraints = 1
 nnoremap <Leader>agi :AsyncRun! go install %<CR>
 "映射GoTests的相关测试文件生成
 nnoremap <Leader>goi :GoInstall <CR>
+nnoremap <Leader>gor :GoRun <CR>
 "需要拷贝ftplugin中的go.vim到vim目录下，进行相关映射
 map <Leader>goa :wa<CR> :GolangTestCurrentPackage<CR>
 map <Leader>gof :wa<CR> :GolangTestFocused<CR>
@@ -257,6 +258,8 @@ function! MyTabFunction ()
     return pumvisible() ? "\<c-n>" : "\<c-x>\<c-o>"
 endfunction
 inoremap <tab> <c-r>=MyTabFunction()<cr>
+nnoremap <leader>gt :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " fzf
 let init_path = $PWD 
@@ -328,7 +331,8 @@ nmap <F9> :TagbarToggle<CR>
 let g:tagbar_ctags_bin='ctags'   "ctags程序的路径
 let g:tagbar_width=30
 let g:tagbar_autofocus = 0
-autocmd VimEnter * nested TagbarOpen
+" 关闭tagbar自动开启
+" autocmd VimEnter * nested TagbarOpen
 
 " 主题配置
 let g:molokai_original = 1
@@ -451,7 +455,6 @@ vnoremap <silent> <Leader>F y?<c-r>=escape(@", "\\/.*$^~[]")<cr><cr>
 " 按F12执行对应文件
 autocmd FileType php map <F12> :!php %<CR>      
 autocmd FileType lua map <F12> :!lua %<CR>     
-autocmd FileType go map <F12> :!go run %<CR>    
 autocmd FileType python map <F12> :!python %<CR>    
 
 " 设置字典 ~/.vim/bundle/dict/文件的路径"

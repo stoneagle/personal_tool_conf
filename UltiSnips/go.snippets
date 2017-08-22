@@ -1,4 +1,4 @@
-snippet sli "seelog.Infof(...)"
+snippet slo "seelog.Infof(...)"
 seelog.Infof("${1:${VISUAL}} = %+v\n", $1)
 endsnippet
 
@@ -12,4 +12,12 @@ endsnippet
 
 snippet slw "seelog.Warnf(...)"
 seelog.Warnf("${1:${VISUAL}} = %+v\n", $1)
+endsnippet
+
+snippet errn "err return" 
+if err != nil {
+	${1:code}
+	return ${1:ret}, err
+}
+${0}
 endsnippet
