@@ -14,12 +14,12 @@ Plugin 'mattn/emmet-vim'"
 Plugin 'majutsushi/tagbar'
 
 "基于语义的代码补全
-"YouCompleteMe对于php不友好，非常慢，而且安装过重
-"Plugin 'Valloric/YouCompleteMe'
-"Plugin 'SuperTab'
-Plugin 'Shougo/neocomplcache.vim'
-"用于完善-号选择的插件，屏蔽，使用体验不好
-"Plugin 'Shougo/unite.vim'
+"YouCompleteMe
+Plugin 'Valloric/YouCompleteMe'
+" neocomplcache，被YCM取代
+" Plugin 'Shougo/neocomplcache.vim'
+" python补全
+" Plugin 'davidhalter/jedi-vim'
 
 "airline，状态栏显示
 Plugin 'bling/vim-airline'
@@ -36,12 +36,7 @@ Plugin 'EasyMotion'
 "代码补全，模板代码生成"
 Plugin 'UltiSnips'
 
-"代码块集合
-"与ultisnips功能有些重合，而且plugininstall失败
-"Plugin 'honza/vim-snippets'
-
 "文件查询
-"Plugin 'ctrlpvim/ctrlp.vim' 效率被fzf取代
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 
 "括号补全
@@ -55,11 +50,6 @@ Plugin 'terryma/vim-multiple-cursors'
 
 "快速注释""
 Plugin 'tpope/vim-commentary'
-
-"语法检测的插件，变量类型写错了、句末分号忘加了(针对需要加分号的语言)等等语法错误都能自动检测出来"
-"需要vim版本7.15"
-"配合vim-go使用非常慢，非常卡顿"
-"Plugin 'scrooloose/syntastic' "
 
 "语法检测插件，异步
 "需要vim版本8.0以上
@@ -83,7 +73,6 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-lua-ftplugin'
 
 "缓冲区显示插件
-"Plugin 'bsdelf/bufferhint'
 Plugin 'vim-scripts/bufexplorer.zip'
 
 "代码垂直缩进对齐
@@ -116,9 +105,6 @@ Plugin 'brookhong/cscope.vim'
 "angularjs的ts插件
 Plugin 'leafgarland/typescript-vim'
 
-"python插件
-Plugin 'davidhalter/jedi-vim'
-
 "驼峰跳转
 Plugin 'bkad/CamelCaseMotion'
 
@@ -144,7 +130,6 @@ au BufRead,BufNewFile *.go set filetype=go
 "在开发大型项目时过于卡顿
 let g:go_fmt_command = 'goimports'    "save file时既可以格式化代码，又可以自动插入包导入语句
 set completeopt-=preview            "关闭自动补全时的函数提示窗口
-"当vimgo与syntastic一起使用时，vim会无法显示语法格式错误
 "避免GoTest与GoBuild等命令的输出不显示
 let g:go_list_type                   = "quickfix"
 "让quickfix默认在底部显示
@@ -157,7 +142,6 @@ let g:go_highlight_interfaces        = 1
 let g:go_highlight_operators         = 1
 let g:go_highlight_build_constraints = 1
 "install当前Golang项目
-"nnoremap <Leader>agi :AsyncRun! go install %<CR>
 nnoremap <Leader>agi :AsyncRun! go install %<CR>
 "映射GoTests的相关测试文件生成
 nnoremap <Leader>goi :GoInstall <CR>
@@ -186,55 +170,99 @@ let g:jedi#popup_select_first=0
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#popup_on_dot = 0
 
-"neocomplcache"
-let g:acp_enableAtStartup                        = 0
-let g:neocomplcache_enable_at_startup            = 1
-let g:neocomplcache_enable_smart_case            = 1
-"let g:neocomplcache_enable_camel_case_completion = 1
-"let g:neocomplcache_enable_underbar_completion   = 1
-let g:neocomplcache_min_syntax_length            = 5
-let g:neocomplcache_lock_buffer_name_pattern     = '\*ku\*'
-let g:neocomplcache_enable_auto_select           = 0
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
-"imap <expr> -  pumvisible() ? "\<Plug>(neocomplcache_start_unite_quick_match)" : '-' 
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType python setlocal omnifunc=jedi#completions
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-if !exists('g:neocomplcache_force_omni_patterns')
-  let g:neocomplcache_force_omni_patterns = {}
-endif
-let g:neocomplcache_force_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplcache_force_omni_patterns.go = '\h\w*\.\?'
-let g:neocomplcache_force_omni_patterns.python = '\%([^. \t]\.\|^\s*@\)\w*'
-" let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-" let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+" neocomplcache
+" let g:acp_enableAtStartup                        = 0
+" let g:neocomplcache_enable_at_startup            = 1
+" let g:neocomplcache_enable_smart_case            = 1
+" let g:neocomplcache_min_syntax_length            = 5
+" let g:neocomplcache_lock_buffer_name_pattern     = '\*ku\*'
+" let g:neocomplcache_enable_auto_select           = 0
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+" inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
+" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType python setlocal omnifunc=jedi#completions
+" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" if !exists('g:neocomplcache_force_omni_patterns')
+"   let g:neocomplcache_force_omni_patterns = {}
+" endif
+" let g:neocomplcache_force_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+" let g:neocomplcache_force_omni_patterns.go = '\h\w*\.\?'
+" let g:neocomplcache_force_omni_patterns.python = '\%([^. \t]\.\|^\s*@\)\w*'
+" " 下面不需要
+" " let g:neocomplcache_enable_camel_case_completion = 1
+" " let g:neocomplcache_enable_underbar_completion   = 1
+" " imap <expr> -  pumvisible() ? '\<Plug>(neocomplcache_start_unite_quick_match)' : '-' 
+" " let g:neocomplcache_force_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+" " let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+" " 上面不需要
 
-" ctrlp(效率被fzf取代)
-" 忽略不必要的文件与权限
-" let g:ctrlp_custom_ignore = {
-"   \ 'dir':  'vendor/bundle/*\|vendor/cache/*\|public\|spec',
-"   \ 'file': '\v\.(exe|so|dll|swp|log|jpg|png|json)$',
-"   \ }
+" youcompleteme  默认tab  s-tab 和自动补全冲突
+" 从第3个键入字符就开始罗列匹配项
+let g:ycm_min_num_of_chars_for_completion = 3 
+" 允许自动触发
+let g:ycm_auto_trigger = 1
+" 在注释输入中也能补全
+let g:ycm_complete_in_comments = 1
+" 语法关键字补全
+let g:ycm_seed_identifiers_with_syntax=1
+" 设置YCM不在字符串内补全
+let g:ycm_complete_in_strings = 0
+let g:ycm_key_list_select_completion=['<C-n>', '<C-j>']
+let g:ycm_key_list_previous_completion=['<C-p>', '<C-k>']
+let g:ycm_filetype_blacklist = {
+			\ 'tagbar' : 1,
+			\ 'qf' : 1,
+			\ 'notes' : 1,
+			\ 'markdown' : 1,
+			\ 'unite' : 1,
+			\ 'text' : 1,
+			\ 'vimwiki' : 1,
+			\ 'pandoc' : 1,
+			\ 'infolog' : 1,
+			\ 'mail' : 1,
+			\ 'mundo': 1,
+			\ 'fzf': 1,
+			\ 'ctrlp' : 1
+			\}
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>*'
+" 开启 YCM 基于标签引擎
+let g:ycm_collect_identifiers_from_tags_files=1
+" 关闭预览框(界面回刷新)
+let g:ycm_add_preview_to_completeopt = 0
+" " 支持ultisnips
+" let g:ycm_use_ultisnips_completer = 1
+" 缓存匹配项
+let g:ycm_cache_omnifunc= 0
+let g:ycm_max_diagnostics_to_display=16
+" 大于50Mb的禁止使用ycm
+let g:ycm_disable_for_files_larger_than_kb = 50000
+"关闭加载.ycm_extra_conf.py提示
+let g:ycm_confirm_extra_conf=0
+" 注释和字符串中的文字也会被收入补全
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
+" 比较喜欢用tab来选择补全...
+function! MyTabFunction ()
+    let line = getline('.')
+    let substr = strpart(line, -1, col('.')+1)
+    let substr = matchstr(substr, "[^ \t]*$")
+    if strlen(substr) == 0
+        return "\<tab>"
+    endif
+    return pumvisible() ? "\<c-n>" : "\<c-x>\<c-o>"
+endfunction
+inoremap <tab> <c-r>=MyTabFunction()<cr>
 
 " fzf
 let init_path = $PWD 
 nnoremap <Leader>f :FZF <CR>
 " 回到初始目录并执行搜索
 nnoremap <Leader>if :execute "cd ".init_path<CR> :FZF <CR>
-
-" Syntastic  
-" let g:syntastic_python_checker = 'pylint'  
-" let g:syntastic_python_checker = 'pep8'  
-" let g:syntastic_go_checkers = ['govet', 'errcheck', 'go']
-" let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['go'], 'passive_filetypes': [] }
-" let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_javascript_eslint_exec = 'eslint'
 
 " ale错误自动校验
 " let g:ale_linters = { 'go': ['gofmt -e', 'go vet', 'golint', 'errcheck', 'gometalinter', 'gosimple', 'staticcheck'], }
@@ -244,6 +272,7 @@ let g:ale_sign_column_always = 1
 " 改变错误和警告标识符
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
+
 " airline展示
 " let g:ale_statusline_format = ['X %d', 'W %d', 'ok'] 
 " 自定义跳转错误行快捷键
@@ -254,7 +283,7 @@ nmap <silent> <C-w> <Plug>(ale_next_wrap)
 " 非匹配文字不显示(体现在asyncrun curl等行为无效)
 autocmd BufEnter * set errorformat&
 nnoremap <Leader>arc :AsyncRun! errcheck %<CR>
-"自动弹出quickfix
+" 自动弹出quickfix
 augroup MyGroup
     autocmd User AsyncRunStart call asyncrun#quickfix_toggle(8, 1)
 augroup END
@@ -280,34 +309,34 @@ nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
 "" i: 查找包含本文件的文件 
 nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>"
 
-"UltiSnip
+" UltiSnip
 let g:UltiSnipsExpandTrigger="ii"
 let g:UltiSnipsJumpForwardTrigger="II"
 let g:UltiSnipsJumpBackwardTrigger="OO"
 
-"nerdtree
+" nerdtree
 let NERDTreeWinSize=20              "设置nerdtree的宽度
 let NERDTreeShowHidden=1
 map <F7> :NERDTreeToggle<CR> 
 autocmd VimEnter * NERDTree
 
-"BufExplorer快捷键
+" BufExplorer快捷键
 nnoremap <F8> :BufExplorer<CR>
 
-"tagbar
+" tagbar
 nmap <F9> :TagbarToggle<CR>
 let g:tagbar_ctags_bin='ctags'   "ctags程序的路径
 let g:tagbar_width=30
 let g:tagbar_autofocus = 0
 autocmd VimEnter * nested TagbarOpen
 
-"主题配置
+" 主题配置
 let g:molokai_original = 1
 let g:rehash256 = 1
 set t_Co=256
 colorscheme molokai
 
-"vim-indent-guides缩进对齐配置
+" vim-indent-guides缩进对齐配置
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1 
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
@@ -315,23 +344,22 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 hi IndentGuidesOdd guibg=red ctermbg=3
 hi IndentGuidesEven guibg=green ctermbg=4
 
-"easymotion
+" easymotion
 map <Leader><Leader>j <Plug>(easymotion-j)
 map <Leader><Leader>k <Plug>(easymotion-k)
 
-"fugitive在vim中的git插件
+" fugitive在vim中的git插件
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gr :Gread<CR>
 nnoremap <Leader>gw :Gwrite<CR>
 nnoremap <Leader>gm :Gmove<CR>
-nnoremap <Leader>gd :Gdelete<CR>
-nnoremap <Leader>gg :Ggrep<CR>
-nnoremap <Leader>gf :Gdiff<CR>
+" nnoremap <Leader>gd :Gdelete<CR>
+" nnoremap <Leader>gg :Ggrep<CR>
+nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gl :Git lg<CR>
 nnoremap <Leader>gp :Git push<CR>
 
-"set tags=/home/wuzhongyang/tags"
 syntax on
 set tags =tags;
 set nocompatible                    "关闭vi兼容模式"
@@ -373,14 +401,14 @@ set laststatus=2                        "显示状态栏，默认值为1，无法显示状态栏"
 
 set statusline=%!statusString 
 
-"折叠
+" 折叠
 set foldenable              "开启折叠"
 set foldmethod=indent       "indent manual syntax 设置语法折叠" 
 set foldcolumn=1            "设置折叠区域的宽度" 
 setlocal foldlevel=1        "设置折叠层数"
 " set foldclose=all"        "设置为自动关闭折叠
 
-"自定义状态栏 "
+" 自定义状态栏 "
 "set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\ 
 "状态栏各个状态" 
 let statusHead	="%-.50f\ %h%m%r" 
@@ -398,16 +426,16 @@ let statusTime	="%{strftime(\"%y-%m-%d %T\",getftime(expand(\"%\")))}"
 let statusEnd=statusKeymap."\ ".statusEncoding.statusRuler."\ ".statusTime 
 let statusString=statusHead.statusBody.statusBlank.statusEnd 
  
-"按空格进行折叠切换"
+" 按空格进行折叠切换"
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
-"窗口分割时，切换需要连续按热键两次，再通过方向进行窗口转移;将其中一个按键映射后减少按键操作"
+" 窗口分割时，切换需要连续按热键两次，再通过方向进行窗口转移;将其中一个按键映射后减少按键操作"
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-"一些不错的映射转换语法"
+" 一些不错的映射转换语法"
 nnoremap <leader>1 :set filetype=xhtml<CR>
 nnoremap <leader>2 :set filetype=css<CR>
 nnoremap <leader>3 :set filetype=javascript<CR>
@@ -416,27 +444,24 @@ nnoremap <leader>h :noh<CR>
 nnoremap <leader>wa :wa<CR>
 nnoremap <leader>q :q<CR>
 
-"快捷关闭键"
-nnoremap <leader>pg :PluginInstall<CR>
-
-"全文搜索选中的文本"
+" 全文搜索选中的文本"
 vnoremap <silent> <Leader>f y/<c-r>=escape(@", "\\/.*$^~[]")<cr><cr>
 vnoremap <silent> <Leader>F y?<c-r>=escape(@", "\\/.*$^~[]")<cr><cr>
 
-"按F12执行对应文件
+" 按F12执行对应文件
 autocmd FileType php map <F12> :!php %<CR>      
 autocmd FileType lua map <F12> :!lua %<CR>     
 autocmd FileType go map <F12> :!go run %<CR>    
 autocmd FileType python map <F12> :!python %<CR>    
 
-"设置字典 ~/.vim/bundle/dict/文件的路径"
+" 设置字典 ~/.vim/bundle/dict/文件的路径"
 "<ctrl-x>_<ctrl-k>打开提示"
 "autocmd filetype javascript set dictionary+=$VIMFILES/bundle/vim-dict/dict/javascript.dic
 "autocmd filetype javascript set dictionary+=$VIMFILES/bundle/vim-dict/dict/node.dic
 "autocmd filetype css set dictionary+=$VIMFILES/bundle/vim-dict/dict/css.dic
 "autocmd filetype php set dictionary+=$VIMFILES/bundle/vim-dict/dict/php.dic
 
-"tabularize根据对应符号自动对齐
+" tabularize根据对应符号自动对齐
 nnoremap <Leader>a= :Tabularize /=<CR>
 vnoremap <Leader>a= :Tabularize /=<CR>
 nnoremap <Leader>ag= :Tabularize /:=<CR>
@@ -448,9 +473,8 @@ vnoremap <Leader>a> :Tabularize /=><CR>
 nnoremap <Leader>a/ :Tabularize /\/\/<CR> 
 vnoremap <Leader>a/ :Tabularize /\/\/<CR>
 
-"粘贴模式
+" 粘贴模式
 set pastetoggle=<F2>
 
-"前端处理
+" 前端处理
 au BufNewFile,BufRead *.volt set filetype=html      "将volt后缀格式，设置为html处理
-"au BufNewFile,BufRead *.ts set filetype=javascript      "将ts后缀格式，设置为javascript处理
