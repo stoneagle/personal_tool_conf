@@ -247,17 +247,17 @@ let g:ycm_disable_for_files_larger_than_kb = 50000
 let g:ycm_confirm_extra_conf=0
 " 注释和字符串中的文字也会被收入补全
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
-" 比较喜欢用tab来选择补全...
-function! MyTabFunction ()
-    let line = getline('.')
-    let substr = strpart(line, -1, col('.')+1)
-    let substr = matchstr(substr, "[^ \t]*$")
-    if strlen(substr) == 0
-        return "\<tab>"
-    endif
-    return pumvisible() ? "\<c-n>" : "\<c-x>\<c-o>"
-endfunction
-inoremap <tab> <c-r>=MyTabFunction()<cr>
+" tab补全会影响基本的tab使用 
+" function! MyTabFunction ()
+"     let line = getline('.')
+"     let substr = strpart(line, -1, col('.')+1)
+"     let substr = matchstr(substr, "[^ \t]*$")
+"     if strlen(substr) == 0
+"         return "\<tab>"
+"     endif
+"     return pumvisible() ? "\<c-n>" : "\<c-x>\<c-o>"
+" endfunction
+" inoremap <tab> <c-r>=MyTabFunction()<cr>
 nnoremap <leader>gt :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
