@@ -364,6 +364,7 @@ nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gl :Git lg<CR>
 nnoremap <Leader>gp :Git push<CR>
 
+
 syntax on
 set tags =tags;
 set nocompatible                    "¹Ø±Õvi¼æÈÝÄ£Ê½"
