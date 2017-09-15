@@ -375,6 +375,9 @@ set ruler                           "打开状态栏标号"
 set shiftwidth=4                    "设定<<和>>命令移动时宽度为4"
 set softtabstop=4                   "使退格键能够一次删除4个空格" 
 set tabstop=4                       "设定tab长度为4" 
+autocmd FileType typescript set sw=2
+autocmd FileType typescript set ts=2
+autocmd FileType typescript set sts=2
 set autoindent
 set expandtab
 set nobackup                        "覆盖文件时不进行备份" 
