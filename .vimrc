@@ -357,6 +357,7 @@ nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gr :Gread<CR>
 nnoremap <Leader>gw :Gwrite<CR>
 nnoremap <Leader>gm :Gmove<CR>
+nnoremap <Leader>gb :Gblame<CR>
 " nnoremap <Leader>gd :Gdelete<CR>
 " nnoremap <Leader>gg :Ggrep<CR>
 nnoremap <Leader>gd :Gdiff<CR>
