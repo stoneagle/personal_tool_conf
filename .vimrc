@@ -48,6 +48,9 @@ Plugin 'Tabular'
 "多光标多行编辑"
 Plugin 'terryma/vim-multiple-cursors'
 
+"跨文件查找"
+Plugin 'dyng/ctrlsf.vim'
+
 "快速注释""
 Plugin 'tpope/vim-commentary'
 
@@ -124,6 +127,15 @@ cmap <TAB>  <C-d>
 "ag查找设置
 let g:ago="/home/wuzhongyang/go_project/src"
 let g:agt="/home/wuzhongyang/opengrok/source/time"
+
+"ctrlsf跨文件查找配置
+nmap <C-F>f <Plug>CtrlSFCwordPath 
+vmap <C-F>f <Plug>CtrlSFVwordPath
+" quickbox形式展现
+" let g:ctrlsf_default_view_mode = 'compact'
+let g:ctrlsf_position = 'bottom'
+let g:ctrlsf_ignore_dir = ['node_modules', 'vendor'] 
+
 
 "go相关插件部署
 au BufRead,BufNewFile *.go set filetype=go
