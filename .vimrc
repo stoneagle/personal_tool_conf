@@ -214,6 +214,9 @@ let g:jedi#popup_on_dot = 0
 " " let g:neocomplcache_force_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 " " 上面不需要
 
+" andviro/flake8-vim配置
+let g:PyFlakeDefaultComplexity=30
+
 " youcompleteme  默认tab  s-tab 和自动补全冲突
 " 从第3个键入字符就开始罗列匹配项
 let g:ycm_min_num_of_chars_for_completion = 3 
