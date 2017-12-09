@@ -394,6 +394,9 @@ set tabstop=4                       "设定tab长度为4"
 autocmd FileType typescript set sw=2
 autocmd FileType typescript set ts=2
 autocmd FileType typescript set sts=2
+autocmd FileType javascript set sw=2
+autocmd FileType javascript set ts=2
+autocmd FileType javascript set sts=2
 set autoindent
 set expandtab
 set nobackup                        "覆盖文件时不进行备份" 
