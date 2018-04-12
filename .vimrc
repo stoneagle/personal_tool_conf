@@ -27,9 +27,6 @@ Plugin 'bling/vim-airline'
 "php开发插件，可查看内建函数manual，并生成注释
 Plugin 'spf13/PIV'
 
-"树状文件结构"
-Plugin 'The-NERD-tree'
-
 "方便位置移动"
 Plugin 'EasyMotion'
 
@@ -55,8 +52,9 @@ Plugin 'dyng/ctrlsf.vim'
 Plugin 'tpope/vim-commentary'
 
 "语法检测插件，异步
+"和cscope的quickbox冲突，需要注意
 "需要vim版本8.0以上
-Plugin 'w0rp/ale'
+"Plugin 'w0rp/ale'
 
 "Plugin 'DBGp-client'
 "vim的xdebug调试接口插件
@@ -102,14 +100,23 @@ Plugin 'benmills/vimux'
 "async异步操作
 Plugin 'skywind3000/asyncrun.vim'
 
-"cscope操作插件
-Plugin 'brookhong/cscope.vim'
-
 "angularjs的ts插件
 Plugin 'leafgarland/typescript-vim'
 
 "驼峰跳转
 Plugin 'bkad/CamelCaseMotion'
+
+"修改高亮显示
+Plugin 'mhinz/vim-signify'
+
+"svn的插件
+Plugin 'juneedahamed/svnj.vim'
+
+"树状文件结构"
+Plugin 'The-NERD-tree'
+
+"cscope操作插件
+Plugin 'brookhong/cscope.vim'
 
 call vundle#end()            
 filetype plugin indent on
