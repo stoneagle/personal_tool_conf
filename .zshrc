@@ -37,3 +37,6 @@ set -g default-command "reattach-to-user-namespace -l /usr/bin/zsh"
 # fzf配置
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# 代理配置
+# export http_proxy=http://127.0.0.1:8118
+# export https_proxy=http://127.0.0.1:8118

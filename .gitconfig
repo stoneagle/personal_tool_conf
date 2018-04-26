@@ -1,2 +1,7 @@
 [alias]
 lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ci) %C(bold blue)<%an>%Creset' --abbrev-commit --
+
+[http]
+	proxy = http://127.0.0.1:8118
+[https]
+	proxy = http://127.0.0.1:8118
