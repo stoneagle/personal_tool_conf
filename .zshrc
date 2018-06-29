@@ -15,6 +15,7 @@ export GOROOT=/home/wuzhongyang/go #注意GOROOT值为Go对应解压路径
 export GOPATH=$GOROOT/gopkg:/home/wuzhongyang/go_project
 export PATH=$PATH:$GOROOT/bin:$GOROOT/gopkg/bin:/home/wuzhongyang/go_project/bin:$HOME/node/bin
 export ANSIBLE_ROOT=/home/wuzhongyang/opengrok/source/ansible
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/usr/lib
 
 ZSH_THEME="agnoster"
 
