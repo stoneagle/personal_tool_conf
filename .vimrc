@@ -118,6 +118,9 @@ Plugin 'The-NERD-tree'
 "cscope操作插件
 Plugin 'brookhong/cscope.vim'
 
+"thrift语法插件
+Plugin 'solarnz/thrift.vim'
+
 call vundle#end()            
 filetype plugin indent on
 let mapleader=','
