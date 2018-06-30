@@ -19,7 +19,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/usr/lib
 
 ZSH_THEME="agnoster"
 
-plugins=(git autojump git-flow zsh-autosuggestions)
+plugins=(git autojump git-flow zsh-autosuggestions docker)
 
 # autojump配置
 COMPLETION_WAITING_DOTS="true"
@@ -39,5 +39,5 @@ set -g default-command "reattach-to-user-namespace -l /usr/bin/zsh"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # 代理配置
-# export http_proxy=http://127.0.0.1:8118
-# export https_proxy=http://127.0.0.1:8118
+export http_proxy=http://127.0.0.1:8118
+export https_proxy=http://127.0.0.1:8118
