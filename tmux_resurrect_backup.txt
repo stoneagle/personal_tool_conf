@@ -1,0 +1,9 @@
+pane    console 1       :~      1       :*      1       :/home/wuzhongyang      1       zsh     :
+pane    quant   1       :..ect/src/quant        1       :*      1       :/home/wuzhongyang/go_project/src/quant 0       zsh     :
+pane    quant   1       :..ect/src/quant        1       :*      2       :/home/wuzhongyang/go_project/src/quant 0       zsh     :
+pane    quant   1       :..ect/src/quant        1       :*      3       :/home/wuzhongyang/go_project/src/quant 1       zsh     :
+pane    quant   2       :..ect/src/quant        0       :-      1       :/home/wuzhongyang/go_project/src/quant 1       zsh     :
+window  console 1       1       :*      cc42,136x38,0,0,5
+window  quant   1       1       :*      b60b,136x38,0,0[136x25,0,0{69x25,0,0,1,66x25,70,0,2},136x12,0,26,3]
+window  quant   2       0       :-      cc41,136x38,0,0,4
+state   quant   console
