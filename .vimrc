@@ -343,6 +343,7 @@ let g:UltiSnipsJumpForwardTrigger="II"
 let g:UltiSnipsJumpBackwardTrigger="OO"
 
 " nerdtree
+let NERDTreeShowBookmarks=1
 let NERDTreeWinSize=20              "ÉèÖÃnerdtreeµÄ¿í¶È
 let NERDTreeShowHidden=1
 map <F7> :NERDTreeToggle<CR> 
