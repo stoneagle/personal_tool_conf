@@ -1,0 +1,37 @@
+snippet svb 
+List(): Observable<${1:Class}[]> {
+  return this.BaseList<$1>($1, this.uri + \`/list\`).pipe(map(${2:Class}s => {
+    return $2s;
+  }))
+}
+
+ListWithCondition($2: $1): Observable<$1[]> {
+  return this.BaseListWithCondition<$1>($2, $1, this.uri + \`/list\`).pipe(map($2s => {
+    return $2s;
+  }))
+}
+
+Get(id: number): Observable<$1> {
+  return this.BaseGet<$1>($1, this.uri + \`/get/${id}\`).pipe(map($2 => {
+    return $2;
+  }))
+}
+
+Add($2: $1): Observable<$1> {
+  return this.BaseAdd<$1>($2, $1, this.uri).pipe(map($2 => {
+    return $2;
+  }))
+}
+
+Update($2: $1): Observable<$1> {
+  return this.BaseUpdate<$1>($2, $1, this.uri + \`/${$2.Id}\`).pipe(map($2 => {
+    return $2;
+  }))
+}
+
+Delete(id: number): Observable<Boolean> {
+  return this.BaseDelete<$1>($1, this.uri + \`/${id}\`).pipe(map($2 => {
+    return $2;
+  }))
+}
+endsnippet

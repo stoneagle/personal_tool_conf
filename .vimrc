@@ -100,8 +100,16 @@ Plugin 'benmills/vimux'
 "async异步操作
 Plugin 'skywind3000/asyncrun.vim'
 
-"angularjs的ts插件
-Plugin 'leafgarland/typescript-vim'
+"typescript插件+和错误提示重复
+"Plugin 'leafgarland/typescript-vim'
+"angularJs
+"Plugin 'burnettk/vim-angular'
+"angular的template高亮
+"Plugin 'Quramy/vim-js-pretty-template'
+"angular-cli的插件
+Plugin 'bdauria/angular-cli.vim'
+"tern插件+和ycm重复了
+"Plugin 'marijnh/tern_for_vim'
 
 "驼峰跳转
 Plugin 'bkad/CamelCaseMotion'
@@ -120,6 +128,9 @@ Plugin 'brookhong/cscope.vim'
 
 "thrift语法插件
 Plugin 'solarnz/thrift.vim'
+
+"json高亮插件
+Plugin 'elzr/vim-json'
 
 call vundle#end()            
 filetype plugin indent on
@@ -283,6 +294,9 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 0
 "     return pumvisible() ? "\<c-n>" : "\<c-x>\<c-o>"
 " endfunction
 " inoremap <tab> <c-r>=MyTabFunction()<cr>
+let g:ycm_semantic_triggers =  {
+      \ 'html': ['<', '"', '</', ' '],
+      \ }
 nnoremap <leader>gt :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
@@ -402,9 +416,6 @@ set ruler                           "打开状态栏标号"
 set shiftwidth=4                    "设定<<和>>命令移动时宽度为4"
 set softtabstop=4                   "使退格键能够一次删除4个空格" 
 set tabstop=4                       "设定tab长度为4" 
-autocmd FileType typescript set sw=2
-autocmd FileType typescript set ts=2
-autocmd FileType typescript set sts=2
 autocmd FileType javascript set sw=2
 autocmd FileType javascript set ts=2
 autocmd FileType javascript set sts=2
@@ -424,7 +435,7 @@ set encoding=utf-8
 set langmenu=zh_CN.UTF-8
 language message zh_CN.UTF-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-autocmd BufNewFile,BufRead *.json set filetype=javascript           "打开json时，用javascript语法高亮显示
+" autocmd BufNewFile,BufRead *.json set filetype=javascript           "打开json时，用javascript语法高亮显示
 set termencoding=utf-8              "vim用于屏幕显示的编码"
 set wrap
 " set nowrapscan                    "禁止在搜索到文件两段时重新搜索
@@ -509,9 +520,23 @@ nnoremap <Leader>a> :Tabularize /=><CR>
 vnoremap <Leader>a> :Tabularize /=><CR>
 nnoremap <Leader>a/ :Tabularize /\/\/<CR> 
 vnoremap <Leader>a/ :Tabularize /\/\/<CR>
+nnoremap <Leader>af :Tabularize /from<CR>
+vnoremap <Leader>af :Tabularize /from<CR>
 
 " 粘贴模式
 set pastetoggle=<F2>
 
 " 前端处理
 au BufNewFile,BufRead *.volt set filetype=html      "将volt后缀格式，设置为html处理
+
+" typescript
+" let g:typescript_compiler_binary = 'tsc'
+" let g:typescript_compiler_options = ''
+" autocmd QuickFixCmdPost [^l]* nested cwindow
+" autocmd QuickFixCmdPost    l* nested lwindow
+autocmd FileType typescript set sw=2
+autocmd FileType typescript set ts=2
+autocmd FileType typescript set sts=2
+" autocmd FileType typescript JsPreTmpl html
+" autocmd FileType typescript syn clear foldBraces
+" autocmd FileType typescript,html call angular_cli#init()`

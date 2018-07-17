@@ -6,14 +6,18 @@ export ZSH=/home/wuzhongyang/.oh-my-zsh
 
 PATH=$PATH
 alias phptags='ctags --langmap=php:.engine.inc.module.theme.php  --php-kinds=cdf  --languages=php --exclude=vendor'
+alias rmdocker="docker ps -a | grep Exited | awk '{print $1}' | xargs docker rm"
 alias tmux='tmux -2'
 alias vim='/home/wuzhongyang/src/vim-master/src/vim'
+alias node='/home/wuzhongyang/src/node-v8.11.3-linux-x64/bin/node'
+alias npm='/home/wuzhongyang/src/node-v8.11.3-linux-x64/bin/npm'
 export DISPLAY=:7 
 export GOARCH=amd64
 export GOOS=linux
 export GOROOT=/home/wuzhongyang/go #注意GOROOT值为Go对应解压路径
 export GOPATH=$GOROOT/gopkg:/home/wuzhongyang/go_project
-export PATH=$PATH:$GOROOT/bin:$GOROOT/gopkg/bin:/home/wuzhongyang/go_project/bin:$HOME/node/bin
+export NODEPATH=/home/wuzhongyang/src/node-v8.11.3-linux-x64/bin
+export PATH=$PATH:$NODEPATH:$GOROOT/bin:$GOROOT/gopkg/bin:/home/wuzhongyang/go_project/bin:$HOME/node/bin
 export ANSIBLE_ROOT=/home/wuzhongyang/opengrok/source/ansible
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/usr/lib
 
@@ -39,5 +43,5 @@ set -g default-command "reattach-to-user-namespace -l /usr/bin/zsh"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # 代理配置
-export http_proxy=http://127.0.0.1:8118
-export https_proxy=http://127.0.0.1:8118
+# export http_proxy=http://127.0.0.1:8118
+# export https_proxy=http://127.0.0.1:8118
