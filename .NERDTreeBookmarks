@@ -1,6 +1,6 @@
 .vimrc ~/.vimrc
 ansible ~/src/ansible
 basic-struct ~/src/basic_structure
-evolution ~/go_project/src/evolution
 personal_tool_conf ~/src/personal_tool_conf
 
+evolution ~/go_project/src/evolution

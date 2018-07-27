@@ -7,6 +7,7 @@ export ZSH=/home/wuzhongyang/.oh-my-zsh
 PATH=$PATH
 alias phptags='ctags --langmap=php:.engine.inc.module.theme.php  --php-kinds=cdf  --languages=php --exclude=vendor'
 alias rmdocker="docker ps -a | grep Exited | awk '{print $1}' | xargs docker rm"
+alias rmdocker-none="docker images | grep none | awk '{print $3}' | xargs docker rm"
 alias tmux='tmux -2'
 alias vim='/home/wuzhongyang/src/vim-master/src/vim'
 alias node='/home/wuzhongyang/src/node-v8.11.3-linux-x64/bin/node'
@@ -39,9 +40,13 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
 # 设置用户空间
 set -g default-command "reattach-to-user-namespace -l /usr/bin/zsh"
 
-# fzf配置
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # 代理配置
 # export http_proxy=http://127.0.0.1:8118
 # export https_proxy=http://127.0.0.1:8118
+
+# fzf配置
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# drone配置
+export DRONE_SERVER=http://basic:5557
+export DRONE_TOKEN=
