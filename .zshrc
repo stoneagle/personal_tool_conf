@@ -44,7 +44,7 @@ set -g default-command "reattach-to-user-namespace -l /usr/bin/zsh"
 # 代理配置
 export http_proxy=http://127.0.0.1:8118
 export https_proxy=http://127.0.0.1:8118
-export no_proxy="127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,localhost,10.244.0.0/16,registry.npm.taobao.org,*.m.daocloud.io";
+export no_proxy="127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,localhost,10.244.0.0/16,registry.npm.taobao.org,*.m.daocloud.io,www.fireseed.cn,123.207.166.143";
 
 # fzf配置
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
