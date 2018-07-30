@@ -12,6 +12,7 @@ alias tmux='tmux -2'
 alias vim='/home/wuzhongyang/src/vim-master/src/vim'
 alias node='/home/wuzhongyang/src/node-v8.11.3-linux-x64/bin/node'
 alias npm='/home/wuzhongyang/src/node-v8.11.3-linux-x64/bin/npm'
+export MACHINEIP=`ip address | grep ens33 | grep inet | awk '{print $2}' | awk -F'/' '{print $1}'`
 export DISPLAY=:7 
 export GOARCH=amd64
 export GOOS=linux
@@ -43,7 +44,7 @@ set -g default-command "reattach-to-user-namespace -l /usr/bin/zsh"
 # 代理配置
 export http_proxy=http://127.0.0.1:8118
 export https_proxy=http://127.0.0.1:8118
-export no_proxy="127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,localhost,10.244.0.0/16";
+export no_proxy="127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,localhost,10.244.0.0/16,registry.npm.taobao.org,*.m.daocloud.io";
 
 # fzf配置
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
