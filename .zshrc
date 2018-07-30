@@ -44,11 +44,11 @@ set -g default-command "reattach-to-user-namespace -l /usr/bin/zsh"
 # 代理配置
 export http_proxy=http://127.0.0.1:8118
 export https_proxy=http://127.0.0.1:8118
-export no_proxy="127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,localhost,10.244.0.0/16,registry.npm.taobao.org,*.m.daocloud.io,www.fireseed.cn,123.207.166.143";
+export no_proxy="127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,localhost,10.244.0.0/16,registry.npm.taobao.org,*.m.daocloud.io,www.fireseed.cn,123.207.166.143,basic";
 
 # fzf配置
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # drone配置
 export DRONE_SERVER=http://basic:5557
-export DRONE_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZXh0Ijoid3V6aG9uZ3lhbmciLCJ0eXBlIjoidXNlciJ9.o4Tn98kIYtt3CyBhe_-xECx-WUPO6ANSO2BPvRBzP-Y
+export DRONE_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZXh0Ijoid3V6aG9uZ3lhbmciLCJ0eXBlIjoidXNlciJ9.DSZL9rFTLRndW3WsR7WFFYGVfG_AlJu4QfMxzhxBBe0
