@@ -100,17 +100,6 @@ Plugin 'benmills/vimux'
 "async异步操作
 Plugin 'skywind3000/asyncrun.vim'
 
-"typescript插件+和错误提示重复
-"Plugin 'leafgarland/typescript-vim'
-"angularJs
-"Plugin 'burnettk/vim-angular'
-"angular的template高亮
-"Plugin 'Quramy/vim-js-pretty-template'
-"angular-cli的插件
-Plugin 'bdauria/angular-cli.vim'
-"tern插件+和ycm重复了
-"Plugin 'marijnh/tern_for_vim'
-
 "驼峰跳转
 Plugin 'bkad/CamelCaseMotion'
 
@@ -132,6 +121,9 @@ Plugin 'solarnz/thrift.vim'
 "json高亮插件
 Plugin 'elzr/vim-json'
 
+"typescript高亮
+Plugin 'leafgarland/typescript-vim'
+
 call vundle#end()            
 filetype plugin indent on
 let mapleader=','
@@ -141,6 +133,10 @@ set modifiable
 autocmd VimLeave * call system("xsel -ib", getreg('+'))
 "使用系统剪切板
 set clipboard=unnamedplus
+
+" 前端处理
+au BufNewFile,BufRead *.volt set filetype=html      "将volt后缀格式，设置为html处理
+au BufNewFile,BufRead *.ts set filetype=typescript      "将ts后缀格式，设置为typescript处理
 
 "命令行模式补齐
 cmap <TAB>  <C-d>
@@ -294,9 +290,6 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 0
 "     return pumvisible() ? "\<c-n>" : "\<c-x>\<c-o>"
 " endfunction
 " inoremap <tab> <c-r>=MyTabFunction()<cr>
-let g:ycm_semantic_triggers =  {
-      \ 'html': ['<', '"', '</', ' '],
-      \ }
 nnoremap <leader>gt :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
@@ -416,6 +409,9 @@ set ruler                           "打开状态栏标号"
 set shiftwidth=4                    "设定<<和>>命令移动时宽度为4"
 set softtabstop=4                   "使退格键能够一次删除4个空格" 
 set tabstop=4                       "设定tab长度为4" 
+autocmd FileType typescript set sw=2
+autocmd FileType typescript set ts=2
+autocmd FileType typescript set sts=2
 autocmd FileType javascript set sw=2
 autocmd FileType javascript set ts=2
 autocmd FileType javascript set sts=2
@@ -525,18 +521,3 @@ vnoremap <Leader>af :Tabularize /from<CR>
 
 " 粘贴模式
 set pastetoggle=<F2>
-
-" 前端处理
-au BufNewFile,BufRead *.volt set filetype=html      "将volt后缀格式，设置为html处理
-
-" typescript
-" let g:typescript_compiler_binary = 'tsc'
-" let g:typescript_compiler_options = ''
-" autocmd QuickFixCmdPost [^l]* nested cwindow
-" autocmd QuickFixCmdPost    l* nested lwindow
-autocmd FileType typescript set sw=2
-autocmd FileType typescript set ts=2
-autocmd FileType typescript set sts=2
-" autocmd FileType typescript JsPreTmpl html
-" autocmd FileType typescript syn clear foldBraces
-" autocmd FileType typescript,html call angular_cli#init()`
