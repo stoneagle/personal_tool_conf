@@ -6,15 +6,14 @@ alias rmdocker="docker ps -a | grep Exited | awk '{print $1}' | xargs docker rm"
 alias rmdocker-none="docker images | grep none | awk '{print $3}' | xargs docker rm"
 alias tmux='tmux -2'
 alias ll='ls -lG'
-export MACHINEIP=`ip address | grep ens33 | grep inet | awk '{print $2}' | awk -F'/' '{print $1}'`
-export DISPLAY=:7 
+# export DISPLAY=:7 
 export GOARCH=amd64
 export GOOS=linux
-export GOROOT=/usr/local/go
-export GOPATH=$GOROOT/gopkg:/Users/wuzhongyang/go/src
+export GOROOT=/Users/wuzhongyang/go
+export GOPATH=$GOROOT/gopkg:/Users/wuzhongyang/workspace/goland
 export PATH=$PATH:$GOROOT/bin:$GOROOT/gopkg/bin
 
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
 plugins=(git autojump git-flow zsh-autosuggestions docker)
 
 # autojump配置
