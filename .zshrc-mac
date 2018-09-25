@@ -1,0 +1,37 @@
+# Path to your oh-my-zsh installation.
+export ZSH=/Users/wuzhongyang/src/.oh-my-zsh
+
+PATH=$PATH
+alias rmdocker="docker ps -a | grep Exited | awk '{print $1}' | xargs docker rm"
+alias rmdocker-none="docker images | grep none | awk '{print $3}' | xargs docker rm"
+alias tmux='tmux -2'
+alias ll='ls -lG'
+export MACHINEIP=`ip address | grep ens33 | grep inet | awk '{print $2}' | awk -F'/' '{print $1}'`
+export DISPLAY=:7 
+export GOARCH=amd64
+export GOOS=linux
+export GOROOT=/usr/local/go
+export GOPATH=$GOROOT/gopkg:/Users/wuzhongyang/go/src
+export PATH=$PATH:$GOROOT/bin:$GOROOT/gopkg/bin
+
+ZSH_THEME="agnoster"
+plugins=(git autojump git-flow zsh-autosuggestions docker)
+
+# autojump配置
+COMPLETION_WAITING_DOTS="true"
+HIST_STAMPS="yyyy-mm-dd"
+[[ -s ~/.autojump/etc/profile.d/autojump.sh  ]] && . ~/.autojump/etc/profile.d/autojump.sh
+
+# oh-my-zsh配置
+source $ZSH/oh-my-zsh.sh
+
+# zsh-autosuggestions配置
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=green'
+
+# 设置用户空间
+set -g default-command "reattach-to-user-namespace -l /usr/bin/zsh"
+
+# 代理配置
+
+# fzf配置
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
