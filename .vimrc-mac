@@ -1,304 +1,654 @@
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim/
+set nocompatible              " be iMproved, required
+filetype off                  " required
+set shell=zsh
+set t_Co=256
+
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-"vundle²å¼ş"
-Plugin 'VundleVim/Vundle.vim'   
-
-"¹¤³Ì²å¼ş"
-Plugin 'shemerey/vim-project'
-
-"tagbar²å¼ş£¬ÅäºÏctagÊ¹ÓÃ
-Plugin 'majutsushi/tagbar'
-
-"»ùÓÚÓïÒåµÄ´úÂë²¹È«
-"YouCompleteMe
+" alternatively, pass a path where Vundle should install plugin
+" call vundle#begin('~/some/path/here')
+Plugin 'VundleVim/Vundle.vim'
+" å¼•æ“
+Plugin 'SirVer/ultisnips'
+" ä»£ç å—é›†åˆ
+Plugin 'honza/vim-snippets' 
+Plugin 'ervandew/supertab'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'tenfyzhong/CompleteParameter.vim'
 
-"airline£¬×´Ì¬À¸ÏÔÊ¾
-Plugin 'bling/vim-airline'
-
-"·½±ãÎ»ÖÃÒÆ¶¯"
-Plugin 'EasyMotion'
-
-"´úÂë²¹È«£¬Ä£°å´úÂëÉú³É"
-Plugin 'UltiSnips'
-
-"ÎÄ¼ş²éÑ¯
+"æ–‡ä»¶æŸ¥è¯¢
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
-
-"À¨ºÅ²¹È«
-Plugin 'Auto-Pairs'
-
-"×¢ÊÍ¶ÔÆë"
-Plugin 'Tabular'
-
-"¶à¹â±ê¶àĞĞ±à¼­"
-Plugin 'terryma/vim-multiple-cursors'
-
-"¿çÎÄ¼ş²éÕÒ"
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'Lokaltog/vim-easymotion'
 Plugin 'dyng/ctrlsf.vim'
+"å…¨å±€æŸ¥æ‰¾æ’ä»¶
+Plugin 'rking/ag.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'terryma/vim-multiple-cursors' "å›è½¦é€‰ä¸­ç›¸åŒå•è¯ï¼Œç±»ä¼¼Sublime Command+D
 
-"¿ìËÙ×¢ÊÍ""
-Plugin 'tpope/vim-commentary'
+Plugin 'chrisbra/csv.vim'
 
-"goµÄvimÓï·¨²å¼ş
-Plugin 'fatih/vim-go'
-"goµÄ´úÂë²¹È«
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
-"goµÄ²âÊÔÉú³É
-Plugin 'buoto/gotests-vim'
-
-"»º³åÇøÏÔÊ¾²å¼ş
-Plugin 'vim-scripts/bufexplorer.zip'
-
-"´úÂë´¹Ö±Ëõ½ø¶ÔÆë
-Plugin 'nathanaelkane/vim-indent-guides'
-
-"²é¿´functionµÄcall tree
-Plugin 'hari-rangarajan/CCTree' 
-
-"Ôö¼ÓÀ¨ºÅ¡¢±êÇ©µÈ
+Plugin 'gregsexton/gitv'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'majutsushi/tagbar'
+"å¢åŠ æ‹¬å·ã€æ ‡ç­¾ç­‰
 Plugin 'tpope/vim-surround'
 
-"¹ÜÀígit
+Plugin 'klen/python-mode'
+"pythonè¡¥å…¨
+Plugin 'davidhalter/jedi-vim'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-lua-ftplugin'
+Plugin 'raymond-w-ko/vim-lua-indent'
+Plugin 'fatih/vim-go'
+Plugin 'godoctor/godoctor.vim'
+
+" Git
 Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 
-""pythonµÄÌáÊ¾²å¼ş
-"Plugin 'andviro/flake8-vim'  
-"" python²¹È«
-"Plugin 'davidhalter/jedi-vim'
+" UI
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'zaki/zazen'
+Plugin 'noahfrederick/vim-hemisu'
 
-"È«¾Ö²éÕÒ²å¼ş
-Plugin 'rking/ag.vim'
+" Themes
+Plugin 'tomasr/molokai'
 
-"asyncÒì²½²Ù×÷
-Plugin 'skywind3000/asyncrun.vim'
+Plugin 'ianva/vim-youdao-translater'
+Plugin 'AndrewRadev/splitjoin.vim'
 
-"ÍÕ·åÌø×ª
+" "å¿«é€Ÿæ³¨é‡Š""
+Plugin 'tpope/vim-commentary'
+"ä»£ç å‚ç›´ç¼©è¿›å¯¹é½
+Plugin 'nathanaelkane/vim-indent-guides'
+"é©¼å³°è·³è½¬
 Plugin 'bkad/CamelCaseMotion'
-
-"ĞŞ¸Ä¸ßÁÁÏÔÊ¾
+"æ³¨é‡Šå¯¹é½"
+Plugin 'Tabular'
+"ç¼“å†²åŒºæ˜¾ç¤ºæ’ä»¶
+Plugin 'vim-scripts/bufexplorer.zip'
+"ä¿®æ”¹é«˜äº®æ˜¾ç¤º
 Plugin 'mhinz/vim-signify'
 
-"Ê÷×´ÎÄ¼ş½á¹¹"
-Plugin 'The-NERD-tree'
-
-"cscope²Ù×÷²å¼ş
+"goçš„æµ‹è¯•ç”Ÿæˆ
+Plugin 'buoto/gotests-vim'
+"asyncå¼‚æ­¥æ“ä½œ
+Plugin 'skywind3000/asyncrun.vim'
+"cscopeæ“ä½œæ’ä»¶
 Plugin 'brookhong/cscope.vim'
+"æŸ¥çœ‹functionçš„call tree
+Plugin 'hari-rangarajan/CCTree' 
+"typescirptè¯­æ³•æ’ä»¶
+Plugin 'leafgarland/typescript-vim'
 
-"json¸ßÁÁ²å¼ş
-Plugin 'elzr/vim-json'
+call vundle#end()            " required
+filetype plugin indent on    " required
+syntax on
 
-call vundle#end()            
-filetype plugin indent on
-let mapleader=','
-"ÔÊĞíÉ¾³ınerdtreeÖĞµÄÎÄ¼ş
-set modifiable
-"µ±vimÍË³öÊ±£¬½«¼ôÌù°åÄÚÈİ±£´æÔÚxselÖĞ(ĞèÒªxselÓëxmanagerÓëvimxµÄÖ§³Ö)
-autocmd VimLeave * call system("xsel -ib", getreg('+'))
-"Ê¹ÓÃÏµÍ³¼ôÇĞ°å
-set clipboard=unnamedplus
+"ç²˜è´´æ¨¡å¼
+set pastetoggle=<F2>
 
-"ÃüÁîĞĞÄ£Ê½²¹Æë
-cmap <TAB>  <C-d>
+set noerrorbells                " No beeps
+set number                      " Show line numbers
+set backspace=indent,eol,start  " Makes backspace key more powerful.
+set showcmd                     " Show me what I'm typing
+set showmode                    " Show current mode.
 
-"ag²éÕÒÉèÖÃ
-let g:ago="/home/wuzhongyang/go_project/src"
-let g:agt="/home/wuzhongyang/opengrok/source/time"
+set noswapfile                  " Don't use swapfile
+set nobackup                    " Don't create annoying backup files
+set splitright                  " Split vertical windows right to the current windows
+set splitbelow                  " Split horizontal windows below to the current windows
+set encoding=utf-8              " Set default encoding to UTF-8
+set autowrite                   " Automatically save before :next, :make etc.
+set autoread                    " Automatically reread changed files without asking me anything
+set laststatus=2
 
-"ctrlsf¿çÎÄ¼ş²éÕÒÅäÖÃ
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set fileformats=unix,dos,mac    " Prefer Unix over Windows over OS 9 formats
+
+set showmatch                   " Do not show matching brackets by flickering
+set incsearch                   " Shows the match while typing
+set hlsearch                    " Highlight found searches
+set ignorecase                  " Search case insensitive...
+set smartcase                   " ... but not when search pattern contains upper case characters
+set clipboard=unnamed
+
+let mapleader = ','
+set linespace=0
+set updatetime=100
+set cursorline
+" set switchbuf=usetab,newtab     " open new buffers always in new tabs
+set switchbuf=usetab,usetab     " open new buffers always in new tabs
+set formatoptions+=tcroqw
+autocmd FileType go :set noexpandtab
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType json :set cole=0
+let g:ackhighlight=1
+let g:TagmaBufMgrLastLine = 1
+let g:NERDTreeDirArrows = 0
+let g:nerdtree_tabs_open_on_gui_startup = 0
+
+nmap <c-]> g<c-]>
+nmap t ,,s
+vmap t ,,s
+nmap gst :Gst<CR>
+nmap <S-H> :bp<CR>
+nmap <S-L> :bn<CR>
+nmap <D-1> 1gt
+nmap <D-2> 2gt
+nmap <D-3> 3gt
+nmap <D-4> 4gt
+nmap <D-5> 5gt
+nmap <D-6> 6gt
+nmap <D-7> 7gt
+nmap <D-8> 8gt
+nmap <D-9> 9gt
+inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+" nmap <expr> <C-J> &diff ? ']c' : '<C-J>'
+" nmap <expr> <C-K> &diff ? '[c' : '<C-K>'
+
+cmap w!! %!sudo tee > /dev/null %
+vmap " S"
+vmap ' S'
+vmap ` S`
+vmap [ S[
+vmap ( S(
+vmap { S{
+vmap } S}
+vmap ] S]
+vmap ) S)
+
+" " æŠ˜å 
+" set foldenable         "å¼€å¯æŠ˜å 
+" set foldmethod=indent  "indent manual syntax è®¾ç½®è¯­æ³•æŠ˜å  
+" set foldcolumn=1       "è®¾ç½®æŠ˜å åŒºåŸŸçš„å®½åº¦"
+" setlocal foldlevel=1   "è®¾ç½®æŠ˜å å±‚æ•°
+" " set foldclose=all"   "è®¾ç½®ä¸ºè‡ªåŠ¨å…³é—­æŠ˜å 
+" " æŒ‰ç©ºæ ¼è¿›è¡ŒæŠ˜å åˆ‡æ¢"
+" nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+
+set guioptions=''
+" çª—å£åˆ†å‰²æ—¶ï¼Œåˆ‡æ¢éœ€è¦è¿ç»­æŒ‰çƒ­é”®ä¸¤æ¬¡ï¼Œå†é€šè¿‡æ–¹å‘è¿›è¡Œçª—å£è½¬ç§»;å°†å…¶ä¸­ä¸€ä¸ªæŒ‰é”®æ˜ å°„åå‡å°‘æŒ‰é”®æ“ä½œ"
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+" ä¸»é¢˜é…ç½®
+set guifont=Source\ Code\ Pro\ Light:h14
+set background=dark
+colorscheme molokai
+set fillchars=vert:\ 
+let g:airline_powerline_fonts = 1
+set clipboard+=unnamed
+set numberwidth=4
+func! MyCtrlPTag()
+        let g:ctrlp_prompt_mappings = {
+                                \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
+                                \ 'AcceptSelection("t")': ['<c-t>'],
+                                \ }
+        CtrlPBufTag
+endfunc
+com! MyCtrlPTag call MyCtrlPTag()
+if has("gui_macvim")
+	let g:ctrlp_map = '<D-p>'
+	nmap <C-]> g<c-]>
+        nmap <D-r> :MyCtrlPTag<cr>
+        imap <D-r> <esc>:MyCtrlPTag<cr>
+	nmap <D-R> :CtrlPBufTagAll<cr>
+	imap <D-R> <esc>:CtrlPBufTagAll<cr>
+    " å…³é—­ç¼“å†²åŒºï¼Œä¸é€€å‡ºçª—å£(å¯¹æœªä¿å­˜çš„æœ‰ç‚¹å°é—®é¢˜)
+	nmap <D-w> :bp<bar>sp<bar>bn<bar>bd<CR>
+	imap <D-w> <esc>:bp<bar>sp<bar>bn<bar>bd<CR>
+	map <D-/> :TComment<cr>
+	vmap <D-/> :TComment<cr>gv
+	nmap <D-f> :CtrlSF <C-R>=expand("<cword>")<CR>
+	imap <D-f> <ESC>:CtrlSF <C-R>=expand("<cword>")<CR>
+	vnoremap <D-f>  y :CtrlSF"<C-R>=escape(@", '"')<CR>"
+	vnoremap <D-S-f>  y :a
+	map <D-e> :NERDTreeTabsToggle<CR>
+	map <leader>e :NERDTreeFind<CR><CR>
+	"Open sidebar with cmd+k
+	" map <D-k> :NERDTreeTabsToggle<CR>
+	" Window switch map {{{
+	map <D-j> <C-W>j
+	map <D-k> <C-W>k
+	map <D-l> <C-W>l
+	map <D-h> <C-W>h
+
+	" cscope {{{"
+	nmap <D-[> :cs find c <C-R>=expand("<cword>")<CR><CR><C-O>:copen<CR>
+	nmap <D-\> :cs find s <C-R>=expand("<cword>")<CR><CR><C-O>:copen<CR>
+	nmap <D-]> :cs find g <C-R>=expand("<cword>")<CR><CR>
+	" }}}
+        
+        "Sublime Command+Enter 
+        inoremap <D-CR> <ESC>A<CR>
+endif
+
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/cscope*,*/*.csv/,*/*.log,*tags*,*/bin/*        " Linux/MacOSX
+
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+let g:ctrlp_cmd = 'CtrlPMixed'			" search anything (in files, buffers and MRU files at the same time.)
+let g:ctrlp_by_filename = 1
+let g:ctrlp_working_path_mode = 'ra'	" search for nearest ancestor like .git, .hg, and the directory of the current file
+let g:ctrlp_match_window_bottom = 1		" show the match window at the top of the screen
+let g:ctrlp_max_height = 10				" maxiumum height of match window
+let g:ctrlp_switch_buffer = 'Et'		" jump to a file if it's open already
+let g:ctrlp_use_caching = 1				" enable caching
+let g:ctrlp_clear_cache_on_exit=1  		" speed up by not removing clearing cache evertime
+let g:ctrlp_mruf_max = 250 				" number of recently opened files
+let g:ctrlp_open_new_file = 't'
+let g:ctrlp_open_multiple_files = 't'
+let g:ctrlp_open_new_file = 'r'
+let g:ctrlp_custom_ignore = {
+                        \ 'dir':  '\v[\/](\.git|\.hg|\.svn|\.build|github.com|labix.org|bin|pkg)$',
+                        \ 'file': '\v(\.exe|\.so|\.dll|\.a|\.xls|\.csv|\.json|\.log|\.out|gs|gw|gm|tags|gotags|\/U)$',
+                        \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+                        \ }
+let g:ctrlp_buftag_types = {
+                        \ 'go'         : '--language-force=go --golang-types=ftv',
+                        \ 'as'         : '--language-force=actionscript --actionscript-types=fpvc',
+                        \ 'actionscript': '--language-force=actionscript --actionscript-types=fpvc',
+                        \ 'coffee'     : '--language-force=coffee --coffee-types=cmfvf',
+                        \ 'markdown'   : '--language-force=markdown --markdown-types=hik',
+                        \ 'objc'       : '--language-force=objc --objc-types=mpci',
+                        \ 'rc'         : '--language-force=rust --rust-types=fTm'
+                        \ }
+let g:ctrlp_prompt_mappings = {
+                        \ 'PrtBS()':              ['<bs>', '<c-]>'],
+                        \ 'PrtDelete()':          ['<del>'],
+                        \ 'PrtDeleteWord()':      ['<c-w>'],
+                        \ 'PrtClear()':           ['<c-u>'],
+                        \ 'PrtSelectMove("j")':   ['<c-j>', '<down>'],
+                        \ 'PrtSelectMove("k")':   ['<c-k>', '<up>'],
+                        \ 'PrtSelectMove("t")':   ['<Home>', '<kHome>'],
+                        \ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
+                        \ 'PrtSelectMove("u")':   ['<PageUp>', '<kPageUp>'],
+                        \ 'PrtSelectMove("d")':   ['<PageDown>', '<kPageDown>'],
+                        \ 'PrtHistory(-1)':       ['<c-n>'],
+                        \ 'PrtHistory(1)':        ['<c-p>'],
+                        \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
+                        \ 'AcceptSelection("h")': ['<c-x>', '<c-cr>', '<c-s>'],
+                        \ 'AcceptSelection("t")': ['<c-t>'],
+                        \ 'AcceptSelection("v")': ['<c-v>', '<RightMouse>'],
+                        \ 'ToggleFocus()':        ['<s-tab>'],
+                        \ 'ToggleRegex()':        ['<c-r>'],
+                        \ 'ToggleByFname()':      ['<c-d>'],
+                        \ 'ToggleType(1)':        ['<c-f>', '<c-up>'],
+                        \ 'ToggleType(-1)':       ['<c-b>', '<c-down>'],
+                        \ 'PrtExpandDir()':       ['<tab>'],
+                        \ 'PrtInsert("c")':       ['<MiddleMouse>', '<insert>'],
+                        \ 'PrtInsert()':          ['<c-\>'],
+                        \ 'PrtCurStart()':        ['<c-a>'],
+                        \ 'PrtCurEnd()':          ['<c-e>'],
+                        \ 'PrtCurLeft()':         ['<c-h>', '<left>', '<c-^>'],
+                        \ 'PrtCurRight()':        ['<c-l>', '<right>'],
+                        \ 'PrtClearCache()':      ['<F5>'],
+                        \ 'PrtDeleteEnt()':       ['<F7>'],
+                        \ 'CreateNewFile()':      ['<c-y>'],
+                        \ 'MarkToOpen()':         ['<c-z>'],
+                        \ 'OpenMulti()':          ['<D-o>'],
+                        \ 'PrtExit()':            ['<esc>', '<c-c>', '<c-g>'],
+                        \ }
+
+let g:delimitMate_expand_cr = 1
+let delimitMate_balance_matchpairs = 1
+let g:delimitMate_expand_space = 2
+
+imap <expr> <TAB> delimitMate#ShouldJump() ? "<Plug>delimitMateS-Tab" : "<TAB>"
+inoremap <expr> <S-Tab> delimitMate#JumpAny()
+
+let g:syntastic_check_on_wq=1
+let g:syntastic_auto_jump=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_error_symbol = "â–¶â–¶"
+let g:syntastic_warning_symbol = "âš "
+let g:syntastic_mode_map = { "mode": "passive",
+			\ "active_filetypes": ["ruby", "php", "go" ],
+			\ "passive_filetypes": ["shell" ] }
+let g:syntastic_go_checkers = ['govet', 'errcheck']
+
+command! CO CtrlSFOpen
+"ctrlsfè·¨æ–‡ä»¶æŸ¥æ‰¾é…ç½®
 nmap <C-F>f <Plug>CtrlSFCwordPath 
 vmap <C-F>f <Plug>CtrlSFVwordPath
-" quickboxĞÎÊ½Õ¹ÏÖ
-" let g:ctrlsf_default_view_mode = 'compact'
+"quickboxå½¢å¼å±•ç°
+"let g:ctrlsf_default_view_mode = 'compact'
 let g:ctrlsf_position = 'bottom'
 let g:ctrlsf_ignore_dir = ['node_modules', 'vendor'] 
-"goÏà¹Ø²å¼ş²¿Êğ
-au BufRead,BufNewFile *.go set filetype=go
-"ÔÚ¿ª·¢´óĞÍÏîÄ¿Ê±¹ıÓÚ¿¨¶Ù
-let g:go_fmt_command = 'goimports'    "save fileÊ±¼È¿ÉÒÔ¸ñÊ½»¯´úÂë£¬ÓÖ¿ÉÒÔ×Ô¶¯²åÈë°üµ¼ÈëÓï¾ä
-set completeopt-=preview            "¹Ø±Õ×Ô¶¯²¹È«Ê±µÄº¯ÊıÌáÊ¾´°¿Ú
-"±ÜÃâGoTestÓëGoBuildµÈÃüÁîµÄÊä³ö²»ÏÔÊ¾
-let g:go_list_type                   = "quickfix"
-"ÈÃquickfixÄ¬ÈÏÔÚµ×²¿ÏÔÊ¾
-autocmd FileType qf wincmd J
-let g:go_highlight_functions         = 1
-let g:go_highlight_methods           = 1
-let g:go_highlight_fields            = 1
-let g:go_highlight_structs           = 1
-let g:go_highlight_interfaces        = 1
-let g:go_highlight_operators         = 1
+
+" ä¸æœç´¢Goã€nodejsçš„åº“ç›®å½•
+let g:ctrlsf_ignore_dir = ["node_modules", "vendor"]
+
+" Remember last location{{{
+autocmd BufReadPost *
+                        \ if line("'\"")>0&&line("'\"")<=line("$") |
+                        \   exe "normal g'\"" |
+                        \ endif ""'")
+"}}}
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
+"tagbar
+nmap <F9> :TagbarToggle<CR>
+" let g:tagbar_ctags_bin='ctags'   "ctagsç¨‹åºçš„è·¯å¾„
+let g:tagbar_width=30
+let g:tagbar_autofocus = 0
+autocmd VimEnter * nested TagbarOpen
+" map <D-y> :TagbarToggle<cr>
+let g:tagbar_autofocus=1
+let g:tagbar_sort=0
+let g:tagbar_type_go = {
+                        \ 'ctagstype' : 'go',
+                        \ 'kinds'     : [
+                        \ 'p:package',
+                        \ 'i:imports:1',
+                        \ 'c:constants',
+                        \ 'v:variables',
+                        \ 't:types',
+                        \ 'n:interfaces',
+                        \ 'w:fields',
+                        \ 'e:embedded',
+                        \ 'm:methods',
+                        \ 'r:constructor',
+                        \ 'f:functions'
+                        \ ],
+                        \ 'sro' : '.',
+                        \ 'kind2scope' : {
+                        \ 't' : 'ctype',
+                        \ 'n' : 'ntype'
+                        \ },
+                        \ 'scope2kind' : {
+                        \ 'ctype' : 't',
+                        \ 'ntype' : 'n'
+                        \ },
+                        \ 'ctagsbin'  : 'gotags',
+                        \ 'ctagsargs' : '-sort -silent'
+                        \ }
+if has("cscope")
+        " set csprg=/usr/local/bin/cscope
+        set csto=0
+	set cscopequickfix=s-,c-,d-,i-,t-,e-
+        set cst
+        set nocsverb
+        " add any database in current directory
+        if filereadable("cscope.out")
+                cs add cscope.out
+                " else add database pointed to by environment
+        elseif $CSCOPE_DB != ""
+                cs add $CSCOPE_DB
+        endif
+        set csverb
+end
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='dark'
+let g:airline_powerline_fonts=0
+let g:airline#extensions#tabline#exclude_preview = 1
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
+let g:airline#extensions#bufferline#enabled = 1
+
+" YouCompleteMe {{{
+  " ä»ç¬¬3ä¸ªé”®å…¥å­—ç¬¦å°±å¼€å§‹ç½—åˆ—åŒ¹é…é¡¹
+  let g:ycm_min_num_of_chars_for_completion = 3
+  " åœ¨æ³¨é‡Šè¾“å…¥ä¸­ä¹Ÿèƒ½è¡¥å…¨
+  let g:ycm_complete_in_comments = 1  
+  " è®¾ç½®YCMä¸åœ¨å­—ç¬¦ä¸²å†…è¡¥å…¨
+  let g:ycm_complete_in_strings = 0
+  " æ”¯æŒultisnips
+  let g:ycm_use_ultisnips_completer = 1 
+  " æ³¨é‡Šå’Œå­—ç¬¦ä¸²ä¸­çš„æ–‡å­—ä¸æ”¶å…¥è¡¥å…¨
+  let g:ycm_collect_identifiers_from_comments_and_strings = 0
+  " æ”¶é›†tagsä¸­çš„æ ‡ç­¾è¿›è¡Œè¡¥å…¨
+  let g:ycm_collect_identifiers_from_tags_files = 1
+  " æ³¨é‡Šå’Œå­—ç¬¦ä¸²ä¸­çš„æ–‡å­—ä¹Ÿä¼šè¢«æ”¶å…¥è¡¥å…¨
+  let g:ycm_collect_identifiers_from_comments_and_strings = 0
+  " å…³é—­é¢„è§ˆæ¡†(ç•Œé¢å›åˆ·æ–°)
+  let g:ycm_add_preview_to_completeopt = 1
+  let g:ycm_autoclose_preview_window_after_completion = 0
+  let g:ycm_autoclose_preview_window_after_insertion = 1
+  " è¯­æ³•å…³é”®å­—è¡¥å…¨
+  let g:ycm_seed_identifiers_with_syntax=1
+
+  " some symbols
+  let g:ycm_error_symbol = '>>'
+  let g:ycm_warning_symbol = '>*'
+
+  " Specifies Python interpreter to run jedi
+  let g:ycm_python_binary_path = 'python3'
+
+  " Where GoTo* commands result should be opened, same-buffer
+  let g:ycm_goto_buffer_command = 'horizontal-split'
+  " nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
+  nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+  nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
+  " å¤§äº50Mbçš„ç¦æ­¢ä½¿ç”¨ycm
+  let g:ycm_disable_for_files_larger_than_kb = 50000
+
+  let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+ 
+  " blacklist
+  let g:ycm_filetype_blacklist = {
+      \ 'gitcommit' : 1,
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'vimwiki' : 1,
+      \ 'pandoc' : 1,
+      \ 'infolog' : 1,
+      \ 'mail' : 1,
+	  \ 'mundo': 1,
+	  \ 'fzf': 1,
+	  \ 'ctrlp' : 1
+      \}
+" }}}
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+let g:go_highlight_operators = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
 let g:go_highlight_build_constraints = 1
-"installµ±Ç°GolangÏîÄ¿
-nnoremap <Leader>agi :AsyncRun! go install %<CR>
-"Ó³ÉäGoTestsµÄÏà¹Ø²âÊÔÎÄ¼şÉú³É
-nnoremap <Leader>goi :GoInstall <CR>
-nnoremap <Leader>gor :GoRun <CR>
-"ĞèÒª¿½±´ftpluginÖĞµÄgo.vimµ½vimÄ¿Â¼ÏÂ£¬½øĞĞÏà¹ØÓ³Éä
-map <Leader>goa :wa<CR> :GolangTestCurrentPackage<CR>
-map <Leader>gof :wa<CR> :GolangTestFocused<CR>
+let g:go_highlight_functions = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_types = 1
+"let g:go_def_mode = 'guru'
+let g:go_def_mode = 'godef'
 
-"º¯Êı²¹ÆëµÄ¿ì½İ¼ü
-imap <C-e> <C-x><C-o>
+function! OnGolangCompleteDone()
+	if !exists('v:completed_item') || empty(v:completed_item)
+		return
+	endif
 
-"CamelCaseMotion²å¼ş
-map <S-w> <Plug>CamelCaseMotion_w
-map <S-b> <Plug>CamelCaseMotion_b
-map <S-e> <Plug>CamelCaseMotion_e
+	let complete_str = v:completed_item.word
+	if complete_str == ''
+		return
+	endif
 
-" python-jedi²å¼ş
-" Ä¬ÈÏÊ¹ÓÃpython¿ÉÊÇpythonºÍpython3¾²Ì¬ÎŞ·¨¹²Í¬´æÔÚ£¬¹²Í¬´æÔÚÊ±»áÏÔÊ¾dyn£¬vim
-" --versionËäÈ»ÏÔÊ¾+python/dyn£¬µ«ÊÇÊ¹ÓÃÊ±ÎŞĞ§
-let g:jedi#force_py_version=3
-let g:jedi#popup_select_first=0
-" »áÓ°ÏìgoµÄÆ¥Åä
-"set completeopt=longest,menuone
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#popup_on_dot = 0
+	let line = getline('.')
+	let next_char = line[col('.')-1]
+        if  next_char == "("
+                return
+        end
+	let cur_char =line[col('.')-2]
 
-" andviro/flake8-vimÅäÖÃ
-let g:PyFlakeDefaultComplexity=30
+	let abbr = v:completed_item.abbr
+	let startIdx = match(abbr,"(")
+	let endIdx = match(abbr,")")
+	if endIdx - startIdx > 1
+		let argsStr = strpart(abbr, startIdx+1, endIdx - startIdx -1)
+		let argsList = split(argsStr, ",")
+		let snippet = ""
+		if cur_char != "("
+			let snippet = "("
+		end
+		let c = 1
+		for i in argsList
+			if c > 1 
+				let snippet = snippet. ", "
+			endif
+			" strip space
+			let arg = substitute(i, '^\s*\(.\{-}\)\s*$', '\1', '') 
+			let snippet = snippet . '${'.c.":".arg.'}'
+			let c += 1
+		endfor
+		let snippet = snippet . ")$0"
+		call UltiSnips#Anon(snippet)
+	endif
+endfunction
 
-" youcompleteme  Ä¬ÈÏtab  s-tab ºÍ×Ô¶¯²¹È«³åÍ»
-" ´ÓµÚ3¸ö¼üÈë×Ö·û¾Í¿ªÊ¼ÂŞÁĞÆ¥ÅäÏî
-let g:ycm_min_num_of_chars_for_completion = 3 
-" ÔÊĞí×Ô¶¯´¥·¢
-let g:ycm_auto_trigger = 1
-" ÔÚ×¢ÊÍÊäÈëÖĞÒ²ÄÜ²¹È«
-let g:ycm_complete_in_comments = 1
-" Óï·¨¹Ø¼ü×Ö²¹È«
-let g:ycm_seed_identifiers_with_syntax=1
-" ÉèÖÃYCM²»ÔÚ×Ö·û´®ÄÚ²¹È«
-let g:ycm_complete_in_strings = 0
-let g:ycm_key_list_select_completion=['<C-n>', '<C-j>']
-let g:ycm_key_list_previous_completion=['<C-p>', '<C-k>']
-let g:ycm_filetype_blacklist = {
-			\ 'tagbar' : 1,
-			\ 'qf' : 1,
-			\ 'notes' : 1,
-			\ 'markdown' : 1,
-			\ 'unite' : 1,
-			\ 'text' : 1,
-			\ 'vimwiki' : 1,
-			\ 'pandoc' : 1,
-			\ 'infolog' : 1,
-			\ 'mail' : 1,
-			\ 'mundo': 1,
-			\ 'fzf': 1,
-			\ 'ctrlp' : 1
-			\}
-let g:ycm_error_symbol = '>>'
-let g:ycm_warning_symbol = '>*'
-" ¿ªÆô YCM »ùÓÚ±êÇ©ÒıÇæ
-let g:ycm_collect_identifiers_from_tags_files=1
-" ¹Ø±ÕÔ¤ÀÀ¿ò(½çÃæ»ØË¢ĞÂ)
-let g:ycm_add_preview_to_completeopt = 0
-" " Ö§³Öultisnips
-" let g:ycm_use_ultisnips_completer = 1
-" »º´æÆ¥ÅäÏî
-let g:ycm_cache_omnifunc= 0
-let g:ycm_max_diagnostics_to_display=16
-" ´óÓÚ50MbµÄ½ûÖ¹Ê¹ÓÃycm
-let g:ycm_disable_for_files_larger_than_kb = 50000
-"¹Ø±Õ¼ÓÔØ.ycm_extra_conf.pyÌáÊ¾
-let g:ycm_confirm_extra_conf=0
-" ×¢ÊÍºÍ×Ö·û´®ÖĞµÄÎÄ×ÖÒ²»á±»ÊÕÈë²¹È«
-let g:ycm_collect_identifiers_from_comments_and_strings = 0
-" tab²¹È«»áÓ°Ïì»ù±¾µÄtabÊ¹ÓÃ 
-" function! MyTabFunction ()
-"     let line = getline('.')
-"     let substr = strpart(line, -1, col('.')+1)
-"     let substr = matchstr(substr, "[^ \t]*$")
-"     if strlen(substr) == 0
-"         return "\<tab>"
-"     endif
-"     return pumvisible() ? "\<c-n>" : "\<c-x>\<c-o>"
-" endfunction
-" inoremap <tab> <c-r>=MyTabFunction()<cr>
-nnoremap <leader>gt :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" autocmd FileType lua :set shiftwidth=4 
 
-" fzf
-let init_path = $PWD 
-nnoremap <Leader>f :FZF <CR>
-" »Øµ½³õÊ¼Ä¿Â¼²¢Ö´ĞĞËÑË÷
-nnoremap <Leader>if :execute "cd ".init_path<CR> :FZF <CR>
-
-" ale´íÎó×Ô¶¯Ğ£Ñé
-" let g:ale_linters = { 'go': ['gofmt -e', 'go vet', 'golint', 'errcheck', 'gometalinter', 'gosimple', 'staticcheck'], }
-" let g:ale_linters = { 'go': ['gofmt -e', 'go vet', 'golint', 'gometalinter', 'gosimple', 'staticcheck'], }
-" ±£³Ö²à±ßÀ¸¿É¼û
-let g:ale_sign_column_always = 1
-" ¸Ä±ä´íÎóºÍ¾¯¸æ±êÊ¶·û
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
-
-" airlineÕ¹Ê¾
-" let g:ale_statusline_format = ['X %d', 'W %d', 'ok'] 
-" ×Ô¶¨ÒåÌø×ª´íÎóĞĞ¿ì½İ¼ü
-nmap <silent> <C-e> <Plug>(ale_previous_wrap)
-nmap <silent> <C-w> <Plug>(ale_next_wrap)
-
-" asyncrun
-" ·ÇÆ¥ÅäÎÄ×Ö²»ÏÔÊ¾(ÌåÏÖÔÚasyncrun curlµÈĞĞÎªÎŞĞ§)
-autocmd BufEnter * set errorformat&
-nnoremap <Leader>arc :AsyncRun! errcheck %<CR>
-" ×Ô¶¯µ¯³öquickfix
-augroup MyGroup
-    autocmd User AsyncRunStart call asyncrun#quickfix_toggle(8, 1)
+set relativenumber
+augroup CursorLineOnlyInActiveWindow
+        autocmd!
+	autocmd InsertLeave * setlocal relativenumber
+	autocmd InsertEnter * setlocal norelativenumber
+	autocmd BufEnter * setlocal cursorline
+	autocmd BufLeave * setlocal nocursorline
+	autocmd CompleteDone *.go  call OnGolangCompleteDone()
 augroup END
 
-" cscope²å¼ş
-let g:cscope_silent = 1
-nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
-nnoremap <leader>l :call ToggleLocationList()<CR>
-"" s: ²éÕÒCÓïÑÔ·ûºÅ£¬¼´²éÕÒº¯ÊıÃû¡¢ºê¡¢Ã¶¾ÙÖµµÈ³öÏÖµÄµØ·½ 
-nnoremap  <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>
-"" g: ²éÕÒº¯Êı¡¢ºê¡¢Ã¶¾ÙµÈ¶¨ÒåµÄÎ»ÖÃ£¬ÀàËÆctagsËùÌá¹©µÄ¹¦ÄÜ 
-nnoremap  <leader>fg :call CscopeFind('g', expand('<cword>'))<CR>
-"" d: ²éÕÒ±¾º¯Êıµ÷ÓÃµÄº¯Êı 
-nnoremap  <leader>fd :call CscopeFind('d', expand('<cword>'))<CR>
-"" c: ²éÕÒµ÷ÓÃ±¾º¯ÊıµÄº¯Êı 
-nnoremap  <leader>fc :call CscopeFind('c', expand('<cword>'))<CR>
-"" t: ²éÕÒÖ¸¶¨µÄ×Ö·û´® 
-nnoremap  <leader>ft :call CscopeFind('t', expand('<cword>'))<CR>
-"" e: ²éÕÒegrepÄ£Ê½£¬Ïàµ±ÓÚegrep¹¦ÄÜ£¬µ«²éÕÒËÙ¶È¿ì¶àÁË 
-nnoremap  <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>
-"" f: ²éÕÒ²¢´ò¿ªÎÄ¼ş£¬ÀàËÆvimµÄfind¹¦ÄÜ 
-nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
-"" i: ²éÕÒ°üº¬±¾ÎÄ¼şµÄÎÄ¼ş 
-nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>"
+let g:ycm_min_num_of_chars_for_completion = 1
 
-" UltiSnip
-let g:UltiSnipsExpandTrigger="ii"
-let g:UltiSnipsJumpForwardTrigger="II"
-let g:UltiSnipsJumpBackwardTrigger="OO"
+au BufWritePost *.go GoImports
 
-" nerdtree
+nmap <Leader>gt :GoTest<CR>
+nmap <Leader>gi :GoInstall<CR>
+nmap <Leader>gr :GoRename<CR>
+nmap <Leader>ge :GoReferrers<CR>
+nmap <Leader>gl :Gpull<CR>
+nmap <Leader>gp :Gpush<CR>
+nmap <Leader>cc :Gstatus<CR>
+nmap <Leader>gs :Gstatus<CR>
+
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#cmd#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+
+set fileencodings=utf-bom,utf-8,gbk,gb2312,gb18030,cp936,latin1
+hi Pmenu      guifg=#F6F3E8 guibg=#444444
+" hi PmenuSel   guifg=#FFFFFF guibg=#0077DD
+hi PmenuSel   guifg=#FFFFFF guibg=#11AADD
+hi PMenuSbar  guibg=#5A647E
+hi PMenuThumb guibg=#AAAAAA
+" hi Visual     guibg=#1122FF
+" hi Visual     guibg=#0066FF
+hi Visual     guibg=#2566FA
+" hi VertSplit guibg=#272822
+hi VertSplit guibg=#1B1D1E
+hi Cursor guibg=#FF0000
+
+let g:ctrlsf_winsize = '30%'
+
+autocmd BufNewFile,BufRead *.define setf define
+
+"youdao dict
+vnoremap <silent> <Leader>y :<C-u>Ydv<CR>
+nnoremap <silent> <Leader>y :<C-u>Ydc<CR>
+noremap <leader>yd :<C-u>Yde<CR> 
+
+syntax on
+set tags =tags;
+set nocompatible                    "å…³é—­viå…¼å®¹æ¨¡å¼"
+set softtabstop=4                   "ä½¿é€€æ ¼é”®èƒ½å¤Ÿä¸€æ¬¡åˆ é™¤4ä¸ªç©ºæ ¼" 
+set tabstop=4                       "è®¾å®štabé•¿åº¦ä¸º4" 
+set autoindent
+set expandtab
+set nobackup                        "è¦†ç›–æ–‡ä»¶æ—¶ä¸è¿›è¡Œå¤‡ä»½" 
+set autochdir                       "è‡ªåŠ¨åˆ‡æ¢åˆ°å½“å‰ç›®å½•ä¸ºæ–‡ä»¶æ‰€åœ¨ç›®å½•" 
+set backupcopy=yes                  "è®¾ç½®å¤‡ä»½æ—¶è¡Œä¸ºä¸ºè¦†ç›–"
+set ignorecase smartcase            "æœç´¢æ—¶å¿½ç•¥å¤§å°å†™ï¼Œä½†æœ‰ä¸€ä¸ªæˆ–ä»¥ä¸Šå¤§å†™å­—æ¯æ—¶ä»ç„¶ä¿æŒå¯¹å¤§å°å†™æ•æ„Ÿ" 
+set incsearch                       "è¾“å…¥æœç´¢å†…å®¹æ—¶å°±ç›´æ¥æ˜¾ç¤ºæœç´¢ç»“æœ" 
+set hlsearch                        "æœç´¢æ—¶é«˜äº®æ˜¾ç¤ºè¢«æ‰¾åˆ°çš„ä¿¡æ¯" 
+set noerrorbells                    "å…³é—­é”™è¯¯ä¿¡æ¯å“é“ƒ" 
+set novisualbell                    "å…³é—­ä½¿ç”¨å¯è§†å“é“ƒä»£æ›¿å‘¼å«" 
+set t_vb=                           "ç½®ç©ºé”™è¯¯é“ƒå£°"
+
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+autocmd BufNewFile,BufRead *.json set filetype=javascript           "æ‰“å¼€jsonæ—¶ï¼Œç”¨javascriptè¯­æ³•é«˜äº®æ˜¾ç¤º
+set termencoding=utf-8              "vimç”¨äºå±å¹•æ˜¾ç¤ºçš„ç¼–ç "
+set wrap
+set magic                           "è®¾ç½®é­”æœ¯" 
+set smartindent                     "å¼€å¯æ–°è¡Œæ—¶ä½¿ç”¨è‡ªåŠ¨ç¼©è¿› " 
+set backspace=indent,eol,start      "ä¸è®¾å®šåœ¨æ’å…¥çŠ¶æ€ï¼Œæ— æ³•ç”¨é€€æ ¼é”®å’Œdeleteé”®åˆ é™¤å›è½¦ç¬¦ " 
+set cmdheight=1                     "è®¾å®šå‘½ä»¤è¡Œçš„è¡Œæ•°ä¸º1" 
+set laststatus=2                    "æ˜¾ç¤ºçŠ¶æ€æ ï¼Œé»˜è®¤å€¼ä¸º1ï¼Œæ— æ³•æ˜¾ç¤ºçŠ¶æ€æ " 
+"fzf
+let init_path = $PWD 
+nnoremap <Leader>f :FZF <CR>
+"å›åˆ°åˆå§‹ç›®å½•å¹¶æ‰§è¡Œæœç´¢
+nnoremap <Leader>if :execute "cd ".init_path<CR> :FZF <CR>
+
+"nerdtree
 let NERDTreeShowBookmarks=1
-let NERDTreeWinSize=20              "ÉèÖÃnerdtreeµÄ¿í¶È
+let NERDTreeWinSize=20              "è®¾ç½®nerdtreeçš„å®½åº¦
 let NERDTreeShowHidden=1
 map <F7> :NERDTreeToggle<CR> 
 autocmd VimEnter * NERDTree
 
-" BufExplorer¿ì½İ¼ü
-nnoremap <F8> :BufExplorer<CR>
-
-" tagbar
-nmap <F9> :TagbarToggle<CR>
-let g:tagbar_ctags_bin='ctags'   "ctags³ÌĞòµÄÂ·¾¶
-let g:tagbar_width=30
-let g:tagbar_autofocus = 0
-" ¹Ø±Õtagbar×Ô¶¯¿ªÆô
-" autocmd VimEnter * nested TagbarOpen
-
-" Ö÷ÌâÅäÖÃ
-let g:molokai_original = 1
-let g:rehash256 = 1
-set t_Co=256
-colorscheme molokai
-
-" vim-indent-guidesËõ½ø¶ÔÆëÅäÖÃ
+" vim-indent-guidesç¼©è¿›å¯¹é½é…ç½®
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1 
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
@@ -306,123 +656,11 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 hi IndentGuidesOdd guibg=red ctermbg=3
 hi IndentGuidesEven guibg=green ctermbg=4
 
-" easymotion
+"easymotion
 map <Leader><Leader>j <Plug>(easymotion-j)
 map <Leader><Leader>k <Plug>(easymotion-k)
 
-" fugitiveÔÚvimÖĞµÄgit²å¼ş
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gr :Gread<CR>
-nnoremap <Leader>gw :Gwrite<CR>
-nnoremap <Leader>gm :Gmove<CR>
-nnoremap <Leader>gb :Gblame<CR>
-" nnoremap <Leader>gd :Gdelete<CR>
-" nnoremap <Leader>gg :Ggrep<CR>
-nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gc :Gcommit<CR>
-nnoremap <Leader>gl :Git lg<CR>
-nnoremap <Leader>gp :Git push<CR>
-
-syntax on
-set tags =tags;
-set nocompatible                    "¹Ø±Õvi¼æÈİÄ£Ê½"
-set number                          "ÏÔÊ¾ĞĞºÅ"
-set relativenumber                  "ÏÔÊ¾Ïà¶ÔĞĞºÅ
-set cursorline                      "Í»³öÏÔÊ¾µ±Ç°ĞĞ" 
-set ruler                           "´ò¿ª×´Ì¬À¸±êºÅ"
-set shiftwidth=4                    "Éè¶¨<<ºÍ>>ÃüÁîÒÆ¶¯Ê±¿í¶ÈÎª4"
-set softtabstop=4                   "Ê¹ÍË¸ñ¼üÄÜ¹»Ò»´ÎÉ¾³ı4¸ö¿Õ¸ñ" 
-set tabstop=4                       "Éè¶¨tab³¤¶ÈÎª4" 
-autocmd FileType typescript set sw=2
-autocmd FileType typescript set ts=2
-autocmd FileType typescript set sts=2
-autocmd FileType javascript set sw=2
-autocmd FileType javascript set ts=2
-autocmd FileType javascript set sts=2
-set autoindent
-set expandtab
-set nobackup                        "¸²¸ÇÎÄ¼şÊ±²»½øĞĞ±¸·İ" 
-set autochdir                       "×Ô¶¯ÇĞ»»µ½µ±Ç°Ä¿Â¼ÎªÎÄ¼şËùÔÚÄ¿Â¼" 
-set backupcopy=yes                  "ÉèÖÃ±¸·İÊ±ĞĞÎªÎª¸²¸Ç"
-set ignorecase smartcase            "ËÑË÷Ê±ºöÂÔ´óĞ¡Ğ´£¬µ«ÓĞÒ»¸ö»òÒÔÉÏ´óĞ´×ÖÄ¸Ê±ÈÔÈ»±£³Ö¶Ô´óĞ¡Ğ´Ãô¸Ğ" 
-set incsearch                       "ÊäÈëËÑË÷ÄÚÈİÊ±¾ÍÖ±½ÓÏÔÊ¾ËÑË÷½á¹û" 
-set hlsearch                        "ËÑË÷Ê±¸ßÁÁÏÔÊ¾±»ÕÒµ½µÄĞÅÏ¢" 
-set noerrorbells                    "¹Ø±Õ´íÎóĞÅÏ¢ÏìÁå" 
-set novisualbell                    "¹Ø±ÕÊ¹ÓÃ¿ÉÊÓÏìÁå´úÌæºô½Ğ" 
-set t_vb=                           "ÖÃ¿Õ´íÎóÁåÉù"
-
-set encoding=utf-8
-set langmenu=zh_CN.UTF-8
-language message zh_CN.UTF-8
-set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-" autocmd BufNewFile,BufRead *.json set filetype=javascript           "´ò¿ªjsonÊ±£¬ÓÃjavascriptÓï·¨¸ßÁÁÏÔÊ¾
-set termencoding=utf-8              "vimÓÃÓÚÆÁÄ»ÏÔÊ¾µÄ±àÂë"
-set wrap
-" set nowrapscan                    "½ûÖ¹ÔÚËÑË÷µ½ÎÄ¼şÁ½¶ÎÊ±ÖØĞÂËÑË÷
-" set showmatch                     "²åÈëÀ¨ºÅÊ±£¬¶ÌÔİµØÌø×ªµ½Æ¥ÅäµÄ¶ÔÓ¦À¨ºÅ
-" set matchtime=2                   "¶ÌÔİÌø×ªµ½Æ¥ÅäÀ¨ºÅµÄÊ±¼ä
-set magic                           "ÉèÖÃÄ§Êõ" 
-" set hidden                        "ÔÊĞíÔÚÓĞÎ´±£´æµÄĞŞ¸ÄÊ±ÇĞ»»»º³åÇø£¬´ËÊ±ĞŞ¸ÄÓÉvim¸ºÔğ±£´æ 
-set smartindent                         "¿ªÆôĞÂĞĞÊ±Ê¹ÓÃ×Ô¶¯Ëõ½ø " 
-set backspace=indent,eol,start          "²»Éè¶¨ÔÚ²åÈë×´Ì¬£¬ÎŞ·¨ÓÃÍË¸ñ¼üºÍdelete¼üÉ¾³ı»Ø³µ·û " 
-set cmdheight=1                         "Éè¶¨ÃüÁîĞĞµÄĞĞÊıÎª1" 
-set laststatus=2                        "ÏÔÊ¾×´Ì¬À¸£¬Ä¬ÈÏÖµÎª1£¬ÎŞ·¨ÏÔÊ¾×´Ì¬À¸" 
-
-set statusline=%!statusString 
-
-" ÕÛµş
-set foldenable              "¿ªÆôÕÛµş"
-set foldmethod=indent       "indent manual syntax ÉèÖÃÓï·¨ÕÛµş" 
-set foldcolumn=1            "ÉèÖÃÕÛµşÇøÓòµÄ¿í¶È" 
-setlocal foldlevel=1        "ÉèÖÃÕÛµş²ãÊı"
-" set foldclose=all"        "ÉèÖÃÎª×Ô¶¯¹Ø±ÕÕÛµş
-
-" ×Ô¶¨Òå×´Ì¬À¸ "
-"set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\ 
-"×´Ì¬À¸¸÷¸ö×´Ì¬" 
-let statusHead	="%-.50f\ %h%m%r" 
-let statusBreakPoint	="%<" 
-let statusSeparator	="|" 
-let statusFileType	="%{((&ft\ ==\ \"help\"\ \|\|\ &ft\ ==\ \"\")?\"\":\"[\".&ft.\"]\")}" 
-let statusAscii	="\{%b:0x%B\}" 
-let statusCwd	="%-.50{getcwd()}" 
-let statusBody	=statusFileType.statusSeparator.statusAscii.statusSeparator."\ ".statusBreakPoint.statusCwd
-let statusEncoding	="[%{(&fenc\ ==\ \"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]" 
-let statusBlank	="%=" 
-let statusKeymap	="%k" 
-let statusRuler	="%-12.(%lL,%c%VC%)\ %P" 
-let statusTime	="%{strftime(\"%y-%m-%d %T\",getftime(expand(\"%\")))}" 
-let statusEnd=statusKeymap."\ ".statusEncoding.statusRuler."\ ".statusTime 
-let statusString=statusHead.statusBody.statusBlank.statusEnd 
- 
-" °´¿Õ¸ñ½øĞĞÕÛµşÇĞ»»"
-nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
-
-" ´°¿Ú·Ö¸îÊ±£¬ÇĞ»»ĞèÒªÁ¬Ğø°´ÈÈ¼üÁ½´Î£¬ÔÙÍ¨¹ı·½Ïò½øĞĞ´°¿Ú×ªÒÆ;½«ÆäÖĞÒ»¸ö°´¼üÓ³Éäºó¼õÉÙ°´¼ü²Ù×÷"
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-" Ò»Ğ©²»´íµÄÓ³Éä×ª»»Óï·¨"
-nnoremap <leader>1 :set filetype=xhtml<CR>
-nnoremap <leader>2 :set filetype=css<CR>
-nnoremap <leader>3 :set filetype=javascript<CR>
-nnoremap <leader>4 :set filetype=php<CR>
-nnoremap <leader>h :noh<CR>
-nnoremap <leader>wa :wa<CR>
-nnoremap <leader>q :q<CR>
-
-" È«ÎÄËÑË÷Ñ¡ÖĞµÄÎÄ±¾"
-vnoremap <silent> <Leader>f y/<c-r>=escape(@", "\\/.*$^~[]")<cr><cr>
-vnoremap <silent> <Leader>F y?<c-r>=escape(@", "\\/.*$^~[]")<cr><cr>
-
-" °´F12Ö´ĞĞ¶ÔÓ¦ÎÄ¼ş
-autocmd FileType php map <F12> :!php %<CR>      
-autocmd FileType lua map <F12> :!lua %<CR>     
-autocmd FileType python map <F12> :!python %<CR>    
-
-" tabularize¸ù¾İ¶ÔÓ¦·ûºÅ×Ô¶¯¶ÔÆë
+" tabularizeæ ¹æ®å¯¹åº”ç¬¦å·è‡ªåŠ¨å¯¹é½
 nnoremap <Leader>a= :Tabularize /=<CR>
 vnoremap <Leader>a= :Tabularize /=<CR>
 nnoremap <Leader>ag= :Tabularize /:=<CR>
@@ -436,5 +674,93 @@ vnoremap <Leader>a/ :Tabularize /\/\/<CR>
 nnoremap <Leader>af :Tabularize /from<CR>
 vnoremap <Leader>af :Tabularize /from<CR>
 
-" Õ³ÌùÄ£Ê½
-set pastetoggle=<F2>
+"BufExplorerå¿«æ·é”®
+nnoremap <F8> :BufExplorer<CR>
+
+"CamelCaseMotionæ’ä»¶
+map <S-w> <Plug>CamelCaseMotion_w
+map <S-b> <Plug>CamelCaseMotion_b
+map <S-e> <Plug>CamelCaseMotion_e
+
+" ä¸€äº›ä¸é”™çš„æ˜ å°„è½¬æ¢è¯­æ³•"
+nnoremap <leader>h :noh<CR>
+nnoremap <leader>wa :wa<CR>
+nnoremap <leader>q :q<CR>
+
+inoremap <silent><expr> ( complete_parameter#pre_complete("()")
+smap <c-j> <Plug>(complete_parameter#goto_next_parameter)
+imap <c-j> <Plug>(complete_parameter#goto_next_parameter)
+smap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
+imap <c-k> <Plug>(complete_parameter#goto_previous_parameter)
+
+autocmd FileType typescript set sw=2
+autocmd FileType typescript set ts=2
+autocmd FileType typescript set sts=2
+autocmd FileType javascript set sw=2
+autocmd FileType javascript set ts=2
+autocmd FileType javascript set sts=2
+set encoding=utf-8
+set langmenu=zh_CN.UTF-8
+language message zh_CN.UTF-8
+
+"é¿å…GoTestä¸GoBuildç­‰å‘½ä»¤çš„è¾“å‡ºä¸æ˜¾ç¤º
+let g:go_list_type                   = "quickfix"
+"è®©quickfixé»˜è®¤åœ¨åº•éƒ¨æ˜¾ç¤º
+autocmd FileType qf wincmd J
+let g:go_highlight_functions         = 1
+let g:go_highlight_methods           = 1
+let g:go_highlight_fields            = 1
+let g:go_highlight_structs           = 1
+let g:go_highlight_interfaces        = 1
+let g:go_highlight_operators         = 1
+let g:go_highlight_build_constraints = 1
+
+"éœ€è¦æ‹·è´ftpluginä¸­çš„go.vimåˆ°vimç›®å½•ä¸‹ï¼Œè¿›è¡Œç›¸å…³æ˜ å°„
+map <Leader>goa :wa<CR> :GolangTestCurrentPackage<CR>
+map <Leader>gof :wa<CR> :GolangTestFocused<CR>
+
+" python-jediæ’ä»¶
+" é»˜è®¤ä½¿ç”¨pythonå¯æ˜¯pythonå’Œpython3é™æ€æ— æ³•å…±åŒå­˜åœ¨ï¼Œå…±åŒå­˜åœ¨æ—¶ä¼šæ˜¾ç¤ºdynï¼Œvim
+" --versionè™½ç„¶æ˜¾ç¤º+python/dynï¼Œä½†æ˜¯ä½¿ç”¨æ—¶æ— æ•ˆ
+let g:jedi#force_py_version=3
+let g:jedi#popup_select_first=0
+" ä¼šå½±å“goçš„åŒ¹é…
+"set completeopt=longest,menuone
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#popup_on_dot = 0
+
+" asyncrun
+" éåŒ¹é…æ–‡å­—ä¸æ˜¾ç¤º(ä½“ç°åœ¨asyncrun curlç­‰è¡Œä¸ºæ— æ•ˆ)
+autocmd BufEnter * set errorformat&
+nnoremap <Leader>arc :AsyncRun! errcheck %<CR>
+" è‡ªåŠ¨å¼¹å‡ºquickfix
+augroup MyGroup
+    autocmd User AsyncRunStart call asyncrun#quickfix_toggle(8, 1)
+augroup END
+
+" cscopeæ’ä»¶
+let g:cscope_silent = 1
+nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
+nnoremap <leader>l :call ToggleLocationList()<CR>
+"" s: æŸ¥æ‰¾Cè¯­è¨€ç¬¦å·ï¼Œå³æŸ¥æ‰¾å‡½æ•°åã€å®ã€æšä¸¾å€¼ç­‰å‡ºç°çš„åœ°æ–¹ 
+nnoremap  <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>
+"" g: æŸ¥æ‰¾å‡½æ•°ã€å®ã€æšä¸¾ç­‰å®šä¹‰çš„ä½ç½®ï¼Œç±»ä¼¼ctagsæ‰€æä¾›çš„åŠŸèƒ½ 
+nnoremap  <leader>fg :call CscopeFind('g', expand('<cword>'))<CR>
+"" d: æŸ¥æ‰¾æœ¬å‡½æ•°è°ƒç”¨çš„å‡½æ•° 
+nnoremap  <leader>fd :call CscopeFind('d', expand('<cword>'))<CR>
+"" c: æŸ¥æ‰¾è°ƒç”¨æœ¬å‡½æ•°çš„å‡½æ•° 
+nnoremap  <leader>fc :call CscopeFind('c', expand('<cword>'))<CR>
+"" t: æŸ¥æ‰¾æŒ‡å®šçš„å­—ç¬¦ä¸² 
+nnoremap  <leader>ft :call CscopeFind('t', expand('<cword>'))<CR>
+"" e: æŸ¥æ‰¾egrepæ¨¡å¼ï¼Œç›¸å½“äºegrepåŠŸèƒ½ï¼Œä½†æŸ¥æ‰¾é€Ÿåº¦å¿«å¤šäº† 
+nnoremap  <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>
+"" f: æŸ¥æ‰¾å¹¶æ‰“å¼€æ–‡ä»¶ï¼Œç±»ä¼¼vimçš„findåŠŸèƒ½ 
+nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
+"" i: æŸ¥æ‰¾åŒ…å«æœ¬æ–‡ä»¶çš„æ–‡ä»¶ 
+nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>"
+
+" UltiSnip
+" let g:UltiSnipsExpandTrigger="ii"
+let g:UltiSnipsJumpForwardTrigger="II"
+let g:UltiSnipsJumpBackwardTrigger="OO"
+
