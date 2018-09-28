@@ -15,6 +15,8 @@ Plugin 'honza/vim-snippets'
 Plugin 'ervandew/supertab'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tenfyzhong/CompleteParameter.vim'
+"括号补全
+Plugin 'jiangmiao/auto-pairs'
 
 "文件查询
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
@@ -23,9 +25,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'dyng/ctrlsf.vim'
 "全局查找插件
 Plugin 'rking/ag.vim'
-Plugin 'Raimondi/delimitMate'
 Plugin 'terryma/vim-multiple-cursors' "回车选中相同单词，类似Sublime Command+D
-
 Plugin 'chrisbra/csv.vim'
 
 Plugin 'gregsexton/gitv'
@@ -457,9 +457,10 @@ let g:airline#extensions#bufferline#enabled = 1
   " 注释和字符串中的文字也会被收入补全
   let g:ycm_collect_identifiers_from_comments_and_strings = 0
   " 关闭预览框(界面回刷新)
-  let g:ycm_add_preview_to_completeopt = 1
-  let g:ycm_autoclose_preview_window_after_completion = 0
-  let g:ycm_autoclose_preview_window_after_insertion = 1
+  set completeopt-=preview
+  " let g:ycm_add_preview_to_completeopt = 1
+  " let g:ycm_autoclose_preview_window_after_completion = 0
+  " let g:ycm_autoclose_preview_window_after_insertion = 1
   " 语法关键字补全
   let g:ycm_seed_identifiers_with_syntax=1
 
@@ -703,6 +704,9 @@ nnoremap <leader>h :noh<CR>
 nnoremap <leader>wa :wa<CR>
 nnoremap <leader>q :q<CR>
 
+" complete
+let g:AutoPairs = {'[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
+inoremap <buffer><silent> ) <C-R>=AutoPairsInsert(')')<CR>
 inoremap <silent><expr> ( complete_parameter#pre_complete("()")
 smap <c-j> <Plug>(complete_parameter#goto_next_parameter)
 imap <c-j> <Plug>(complete_parameter#goto_next_parameter)
@@ -736,14 +740,14 @@ map <Leader>goa :wa<CR> :GolangTestCurrentPackage<CR>
 map <Leader>gof :wa<CR> :GolangTestFocused<CR>
 
 " python-jedi插件
-" 默认使用python可是python和python3静态无法共同存在，共同存在时会显示dyn，vim
-" --version虽然显示+python/dyn，但是使用时无效
-let g:jedi#force_py_version=3
-let g:jedi#popup_select_first=0
-" 会影响go的匹配
-"set completeopt=longest,menuone
-let g:jedi#auto_vim_configuration = 0
-let g:jedi#popup_on_dot = 0
+" " 默认使用python可是python和python3静态无法共同存在，共同存在时会显示dyn，vim
+" " --version虽然显示+python/dyn，但是使用时无效
+" let g:jedi#force_py_version=3
+" let g:jedi#popup_select_first=0
+" " 会影响go的匹配
+" "set completeopt=longest,menuone
+" let g:jedi#auto_vim_configuration = 0
+" let g:jedi#popup_on_dot = 0
 
 " asyncrun
 " 非匹配文字不显示(体现在asyncrun curl等行为无效)
